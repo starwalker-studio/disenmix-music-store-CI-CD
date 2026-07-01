@@ -1,0 +1,119 @@
+@use "/src/scss/utils/" as *;
+
+.cart_items_card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  .cart_items_header {
+    border-radius: 15px 15px 0 0;
+    background-color: var(--main-color-primary);
+    padding: 9px 22px 9px;
+    h2 {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.cart_item_container {
+  padding: 25px 30px;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+  .cart_item {
+    display: flex;
+    align-items: start;
+    .cart_item_img {
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      text-align: center;
+      margin-right: 20px;
+      p {
+        font-size: 0.75rem;
+        span {
+          font-size: 0.875rem;
+          font-weight: 700;
+        }
+      }
+      img {
+        border-radius: 15px;
+        width: 110px;
+        @include mobile {
+          width: 80px;
+        }
+      }
+    }
+    .cart_item_detail {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 15px;
+      padding: 0 12px;
+      h3 {
+        padding: 0;
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 800;
+        @include mobile {
+          font-size: 0.7rem;
+        }
+      }
+      .cart_item_quantity_buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 0.875rem;
+        border: solid 1px #d8d7d7;
+        align-items: center;
+        span {
+          font-size: 0.85rem;
+        }
+        button {
+          cursor: pointer;
+          padding: 0 10px;
+          background-color: transparent;
+          border-color: transparent;
+          transition: 0.3s ease;
+          &:hover {
+            background-color: #d8d7d7;
+          }
+        }
+      }
+    }
+    .cart_item_remove_buttom {
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      span {
+        margin-right: 3px;
+      }
+      button {
+        cursor: pointer;
+        background-color: transparent;
+        border-color: transparent;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.cart_empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 4rem 0;
+  text-align: center;
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+}

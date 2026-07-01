@@ -1,0 +1,111 @@
+@use "/src/scss/layout/" as *;
+@use "/src/scss/utils/" as *;
+
+.financing_banner {
+  background-color: var(--main-color-primary-dark);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  gap: 2rem;
+  font-size: 1rem;
+  @include mobile {
+    flex-direction: column;
+    gap: 1ex;
+  }
+  span {
+    font-weight: 300;
+  }
+  p {
+    padding: 0;
+    margin: 0;
+    text-decoration: underline;
+    font-weight: 680;
+  }
+}
+
+.hero_section {
+  @include background-section-style;
+  background-image: url("/hero/hero.jpg");
+  height: 72vh;
+  height: 72dvh;
+  @include mobile {
+    min-height: 807px;
+    height: auto;
+  }
+}
+
+.overlay {
+  @include overlay-style;
+}
+
+.hero_container {
+  @include container;
+}
+
+.hero_wrapper {
+  @include wrapper;
+}
+
+.hero_content {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  .offer_header {
+    display: flex;
+    justify-content: center;
+    background-color: #ff5555;
+    border-radius: 12px;
+    width: 300px;
+    @include mobile {
+      width: 200px;
+    }
+    h1 {
+      padding: 0;
+      font-size: 2rem;
+      font-weight: 800;
+      @include mobile {
+        font-size: 1.4rem;
+      }
+    }
+  }
+  p {
+    font-style: italic;
+    font-size: 1rem;
+  }
+  .sub_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    p {
+      font-style: normal;
+      font-size: 2.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      @include mobile {
+        font-size: 0.9rem;
+      }
+    }
+    .flex_button {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr;
+      align-items: center;
+      gap: 2ex;
+      padding: 2ex 0;
+      @include mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        span {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

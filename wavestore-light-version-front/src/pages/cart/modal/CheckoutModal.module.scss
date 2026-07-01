@@ -1,0 +1,71 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center; // el modal sale por la derecha estilo Amazon
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 720px;
+  //   height: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: modalIn 0.25s ease;
+
+  .modal_header {
+    background-color: #635bff;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.15rem 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+
+    h2 {
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+
+  .modal_body {
+    flex: 1;
+    overflow-y: auto; // scroll si hay muchos items
+    padding: 1.5rem 1.5rem 0;
+  }
+
+  .modal_footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid #f0f0f0;
+  }
+}
+
+.close_btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: #fff;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #cecece;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

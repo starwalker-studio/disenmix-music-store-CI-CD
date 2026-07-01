@@ -1,0 +1,79 @@
+@use "/src/scss/layout/" as *;
+@use "/src/scss/utils/" as *;
+
+.success_section {
+  @include section;
+}
+
+.success_container {
+  @include container;
+}
+
+.success_wrapper {
+  @include wrapper;
+  justify-content: center;
+}
+
+.success_content {
+  margin: 42px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  gap: 10ex;
+  padding: 22px 80px 40px;
+  .success_header {
+    margin-bottom: 80px;
+    text-align: center;
+    .header_icon {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        span {
+            font-size: 3rem;
+            color: #2d7001;
+        }
+        h2 {
+          font-size: 2.5rem;
+        }
+    }
+    p {
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+  }
+  .success_order_id {
+    padding: 20px;
+    border-top: solid 1px #adabab;
+    border-bottom: solid 1px #adabab;
+    text-align: center;
+    h3 {
+        font-size: 2.1rem;
+        font-weight: 600;
+    }
+  }
+  .success_mail_confirmation {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 10px;
+    padding: 0 12px;
+    p {
+      font-size: 0.90rem;
+    }
+  }
+  .success_continue_button {
+    display: flex;
+    justify-content: center;
+    padding: 0 12px;
+  }
+  .success_logo {
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    align-items: center;
+    margin-bottom: 80px;
+    img {
+        width: 200px;
+    }
+  }
+}

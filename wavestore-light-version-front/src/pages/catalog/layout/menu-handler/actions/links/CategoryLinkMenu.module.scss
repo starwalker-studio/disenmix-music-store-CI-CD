@@ -1,0 +1,29 @@
+.categories {
+  padding: 1ex 3.5ex 0 0;
+}
+
+.section_title {
+  padding: 1.2ex 0 1.2ex;
+  font-size: 20px;
+  h4 {
+    font-weight: 380;
+    margin: 0;
+  }
+}
+
+.link_category {
+  padding: 5px 0 5px 0;
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(34, 34, 34);
+  font-size: 1.8ex;
+  font-weight: 330;
+  cursor: pointer;
+
+  &:hover {
+    transition: 0.15s ease;
+    color: #0072ba;
+  }
+}

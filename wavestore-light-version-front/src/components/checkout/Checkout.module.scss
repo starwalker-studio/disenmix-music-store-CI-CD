@@ -1,0 +1,23 @@
+.pay_button_row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 32px 0;
+}
+
+.pay_button {    
+  cursor: pointer;
+  // width: 100%;
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+  background-color: #4f46e5;
+  transition: 0.3s ease;
+  &:hover {
+    color: #fff;
+    background-color: #3a35a1;
+  }
+}

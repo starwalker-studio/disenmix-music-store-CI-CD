@@ -1,0 +1,70 @@
+services:
+  frontend-dev:
+    build:
+      context: ./wavestore-light-version-front
+      dockerfile: Dockerfile.dev
+    container_name: wavestore-website-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./wavestore-light-version-front/src:/app/src
+      - ./wavestore-light-version-front/public:/app/public
+      - ./wavestore-light-version-front/index.html:/app/index.html
+      - ./wavestore-light-version-front/vite.config.ts:/app/vite.config.ts
+      - ./wavestore-light-version-front/tsconfig.json:/app/tsconfig.json
+      - ./wavestore-light-version-front/tsconfig.app.json:/app/tsconfig.app.json
+      - ./wavestore-light-version-front/tsconfig.node.json:/app/tsconfig.node.json
+      - ./wavestore-light-version-front/eslint.config.js:/app/eslint.config.js
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - nginx
+    networks:
+      - app-network
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    container_name: wavestore-nginx-dev
+    ports:
+      - "8000:80"
+    volumes:
+      - ./wavestore-backend-light-version:/var/www/html
+    depends_on:
+      - laravel-app
+    networks:
+      - app-network
+
+  laravel-app:
+    build:
+      context: ./wavestore-backend-light-version
+      dockerfile: Dockerfile.dev
+    container_name: wavestore-laravel-dev
+    volumes:
+      - ./wavestore-backend-light-version:/var/www/html
+    env_file:
+      - ./wavestore-backend-light-version/.env.docker
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: wavestore-mysql-dev
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=db_wavestore_lt_version
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:

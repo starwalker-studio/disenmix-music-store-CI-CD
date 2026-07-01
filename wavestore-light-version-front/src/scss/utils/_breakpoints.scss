@@ -1,0 +1,164 @@
+// responsive mobile
+
+// ==========================
+// Breakpoints (SASS Utils)
+// ==========================
+
+// Escala de breakpoints (inspirado en Material y Bootstrap, ajustado)
+// Smartphones
+$breakpoint-xs: 390px; // móviles muy pequeños
+$breakpoint-sm: 480px; // móviles pequeños
+$breakpoint-md: 600px; // móviles grandes
+$breakpoint-lg: 768px; // móviles extra grandes
+$breakpoint-xl: 1024px; // móviles 4k, 8k
+
+// Tablets
+$breakpoint-tablet-sm: 768px; // iPad Mini portrait / tablets chicas
+$breakpoint-tablet-md: 810px; // iPad 10ª gen portrait
+$breakpoint-tablet-lg: 834px; // iPad Air / Pro portrait
+$breakpoint-tablet-xl: 1024px; // iPad Pro landscape / laptops pequeñas
+
+// Desktop
+$breakpoint-desktop: 1280px; // laptops normales
+$breakpoint-desktop-lg: 1440px; // monitores grandes
+$breakpoint-desktop-xl: 1920px; // pantallas full HD / wide
+
+@mixin xs {
+  @media only screen and (max-width: #{$breakpoint-xs}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media only screen and (max-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media only screen and (max-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin tablet-sm {
+  @media (min-width: #{$breakpoint-tablet-sm}) and (max-width: #{$breakpoint-tablet-md - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet-md {
+  @media (min-width: #{$breakpoint-tablet-md}) and (max-width: #{$breakpoint-tablet-lg - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet-lg {
+  @media (min-width: #{$breakpoint-tablet-lg}) and (max-width: #{$breakpoint-tablet-xl - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet-xl {
+  @media (min-width: #{$breakpoint-tablet-xl}) and (max-width: #{$breakpoint-desktop - 1}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-lg - 1}) {
+    @content;
+  }
+}
+
+// @mixin tablet {
+//   @media (min-width: #{$breakpoint-lg}) and (max-width: #{$breakpoint-xl - 1}) {
+//     @content;
+//   }
+// }
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 1. VARIABLES — Anchos portrait (breakpoint principal de cada tablet)
+// -----------------------------------------------------------------------------
+
+// --- Apple iPads ---
+$tablet-ipad-mini-7:          744px;   // iPad mini 7 (A17 Pro, 2024) — 8.3"
+$tablet-ipad-10:               810px;   // iPad 10th gen (A16, 2024) — 10.2"
+$tablet-ipad-air-11:           820px;   // iPad Air 11" M3/M4 (2025–2026)
+$tablet-ipad-pro-11:           834px;   // iPad Pro 11" M4/M5 (2024–2025)
+$tablet-ipad-air-13:          1024px;   // iPad Air 13" M3/M4 (2025–2026)
+$tablet-ipad-pro-13:          1032px;   // iPad Pro 13" M4/M5 (2024–2025)
+
+// --- Samsung Galaxy Tab ---
+$tablet-samsung-a9-87:         800px;   // Galaxy Tab A9 8.7" / A11 8.7" / FE 10.9"
+$tablet-samsung-s9-11:         884px;   // Galaxy Tab S9 11" / S11 11"
+$tablet-samsung-s9-plus:       876px;   // Galaxy Tab S9+ 12.4" / S10+ 12.4"
+$tablet-samsung-s9-ultra:      924px;   // Galaxy Tab S9 Ultra 14.6" / S11 Ultra
+
+// --- Lenovo ---
+$tablet-lenovo-m9:             800px;   // Tab M9 8.8"
+$tablet-lenovo-m10:            800px;   // Tab M10 Plus 10.6"
+$tablet-lenovo-p11-pro:        800px;   // Tab P11 Pro Gen2 11.2"
+$tablet-lenovo-p12-pro:        900px;   // Tab P12 Pro 12.7"
+
+// --- Amazon Fire ---
+$tablet-fire-hd8:              800px;   // Fire HD 8 (2024)
+$tablet-fire-hd10:             800px;   // Fire HD 10 (2023)
+$tablet-fire-max11:            800px;   // Fire Max 11 (2023)
+
+// --- Google ---
+$tablet-pixel-tablet:         1024px;   // Pixel Tablet 11" (2023)
+
+// --- Microsoft Surface ---
+$tablet-surface-go4:           720px;   // Surface Go 4 10.5"
+$tablet-surface-pro11:         912px;   // Surface Pro 11 13"
+
+// -----------------------------------------------------------------------------
+// 2. BREAKPOINTS SEMÁNTICOS RECOMENDADOS
+// Agrupa los dispositivos reales en rangos útiles para SCSS
+// -----------------------------------------------------------------------------
+
+//  < 768px   → móvil (no tablet)
+//  768–819px → tablets pequeñas (mini / Surface Go / budget Android)
+//  820–883px → tablets medianas (iPad Air 11", Galaxy Tab A/FE)
+//  884–1023px→ tablets grandes (Galaxy Tab S 11", Surface Pro, Lenovo P12)
+// 1024–1031px→ tablets XL / iPad Air 13" / Pixel Tablet
+// 1032px+   → iPad Pro 13" (modo casi-desktop)
+
+$bp-tablet-sm-min:    768px;
+$bp-tablet-sm-max:    819px;
+
+$bp-tablet-md-min:    820px;
+$bp-tablet-md-max:    883px;
+
+$bp-tablet-lg-min:    884px;
+$bp-tablet-lg-max:   1023px;
+
+$bp-tablet-xl-min:   1024px;
+$bp-tablet-xl-max:   1031px;
+
+$bp-tablet-pro-min:  1032px;   // iPad Pro 13" en adelante
+
+
+// -----------------------------------------------------------------------------
+// 3. MIXINS DE MEDIA QUERIES
+// -----------------------------------------------------------------------------
+
+// --- Rango genérico tablet (cualquier tablet en portrait) ---
+@mixin tablet {
+  @media only screen and (min-width: $bp-tablet-sm-min) and (max-width: ($bp-tablet-pro-min + 100px)) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media only screen and (min-width: $bp-tablet-sm-min) and (orientation: landscape) {
+    @content;
+  }
+}

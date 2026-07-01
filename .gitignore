@@ -1,0 +1,22 @@
+# Dependencias
+wavestore-backend-light-version/vendor/
+wavestore-light-version-front/node_modules/
+wavestore-backend-light-version/node_modules/
+
+# Variables de entorno sensibles
+wavestore-backend-light-version/.env
+wavestore-backend-light-version/.env.docker
+wavestore-light-version-front/.env
+
+# Logs
+**/logs/
+*.log
+
+# Compiled assets
+wavestore-light-version-front/dist/
+
+# Storage de Laravel
+wavestore-backend-light-version/storage/framework/cache/
+wavestore-backend-light-version/storage/framework/sessions/
+wavestore-backend-light-version/storage/framework/views/
+wavestore-backend-light-version/storage/logs/

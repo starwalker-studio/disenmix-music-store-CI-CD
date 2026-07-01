@@ -1,0 +1,70 @@
+.brands_section {
+  // padding-top: 0.5ex;
+}
+
+.section_title {
+  padding: 1.2ex 0 1.2ex;
+  font-size: 20px;
+  h4 {
+    font-weight: 380;
+    margin: 0;
+  }
+}
+
+.brand_list {
+  padding: 0.2ex 3.5ex 1ex 0;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px;
+  }
+}
+
+.product_brand {
+  color: rgb(34, 34, 34);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 2px 0;
+}
+
+.checkbox_container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  &:hover {
+    color: #0072ba;
+    transition: 0.15s ease;
+  }
+}
+
+.checkbox_container input[type="checkbox"] {
+  margin: 0;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #b1b1b1;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:checked {
+    background: #0072ba;
+    border-color: #0072ba;
+  }
+
+  &:checked::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+}

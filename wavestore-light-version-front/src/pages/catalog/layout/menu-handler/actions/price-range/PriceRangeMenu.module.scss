@@ -1,0 +1,56 @@
+.section_title {
+  padding: 1ex 0 1.2ex;
+  font-size: 20px;
+  h4 {
+    font-weight: 380;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.price_range_section {
+  padding: 1.2ex 3.5ex 0ex 0;
+}
+
+.price_range {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5ex 0 1.5ex 0;
+  width: 100%;
+  p {
+    margin: 0;
+    font-size: 1.6ex;
+    font-weight: 600;
+  }
+}
+
+.input_range {
+  input[type="range"] {
+    margin: 0;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 4px;
+    background: #d4d4d4;
+    outline: none;
+  }
+}
+
+.price_range_buttons {
+  padding: 1.5ex 3.5ex 1.5ex 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.price_range_buttons button {
+  border: 1px solid #b1b1b1;
+  height: 26px;
+  background-color: #fff;
+  width: 8ex;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ececec;
+    transition: 0.15s;
+  }
+}

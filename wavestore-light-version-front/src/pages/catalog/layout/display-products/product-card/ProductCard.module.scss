@@ -1,0 +1,86 @@
+@forward "/src/scss/common/avail/";
+@use "/src/scss/utils/" as *;
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 2.3em 1em 50px;
+  text-align: center;
+  transition: all 0.15s ease 0s;
+  width: 25%;
+  border-bottom: 1px solid #d4d4d4;
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-color: #fff;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.1),
+      0 0 5.8px 2px rgba(0, 0, 0, 0.192);
+    transition: box-shadow 0.1s ease-in-out;
+  }
+
+  @include tablet {
+    justify-content: none;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.card {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1ex;
+  img {
+    width: 80%;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1ex;
+  margin-top: 5px;
+  padding: 0 32px;
+  @include tablet {
+    padding: 0 12px;
+  }
+  @include tablet-landscape {
+    padding: 0 12px;
+  }
+}
+
+.model {
+  text-align: start;
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 15.5px;
+  overflow: hidden;
+  position: relative;
+  color: rgb(73, 73, 73);
+  @include tablet {
+    font-size: .7rem;
+  }
+  @include tablet-landscape {
+    font-size: .7rem;
+  }
+}
+
+.add_cart_button {
+  padding: 1.5ex 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

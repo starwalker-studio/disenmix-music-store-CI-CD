@@ -1,0 +1,76 @@
+@use "/src/scss/layout/" as *;
+@use "/src/scss/utils/" as *;
+ 
+.product_section {
+  @include section;
+}
+
+.product_container {
+  @include container;
+}
+
+.product_wrapper {
+  @include wrapper;
+}
+
+.product_summary {
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: #2e2d2b;
+}
+
+.product_header_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.product_header {
+    border-bottom: 1px solid #e0dfde;
+    margin-top: 25px;
+    padding: 0 0 24px;
+    position: relative;
+    width: 100%;
+
+    h1 {
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1;
+        margin: 0 0 7px;
+    }
+
+    .product_desc {
+        font-size: 1.5ex;
+    }
+    
+    .product_meta {
+        margin-top: 1.4ex;
+        font-size: 1.5ex;
+        font-weight: 800;
+    }
+}
+
+.product_grid {
+    display: grid;
+    grid-template-columns: 750px 1fr;
+    gap: 5ex;
+    justify-items: center;
+    margin-bottom: 1rem;
+    padding: 0;
+    list-style: none;
+    @include mobile {
+        display: flex;
+        flex-direction: column;        
+    }
+    @include tablet {
+        display: flex;
+        flex-direction: column;        
+    }
+}
+
+.loading_prod_spinner {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

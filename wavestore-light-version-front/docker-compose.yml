@@ -1,0 +1,10 @@
+services:
+  frontend-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wavestore-website-prod
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production

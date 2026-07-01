@@ -1,0 +1,55 @@
+@use "/src/scss/utils/" as *;
+
+
+
+.product_options {
+  padding-top: 4ex;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @include mobile {
+    padding: 0;
+  }
+}
+
+.product_pricing_top_level {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product_pricing {
+  flex-basis: 100%;
+  margin-bottom: 15px;
+}
+
+.price b {
+  display: inline-block;
+  font-size: 0.65em;
+  vertical-align: top;
+}
+
+.final_row {
+  display: inline-block;
+  vertical-align: top;
+  color: #d73133;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.amount {
+  font-size: 1.2em;
+  font-style: normal;
+}
+
+.product_info {
+  border-top: 1px solid #e0dfde;
+  padding: 10px 0 10px;
+  width: 100%;
+  font-size: 1.5ex;
+  h3 {
+    font-size: 2.8ex;
+    font-weight: 500;
+  }
+}

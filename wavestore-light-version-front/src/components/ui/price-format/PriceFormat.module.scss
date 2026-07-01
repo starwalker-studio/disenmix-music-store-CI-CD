@@ -1,0 +1,36 @@
+@use "/src/scss/utils/" as *;
+
+.final_row {
+  display: flex;
+  justify-content: start;
+  color: #ff5506;
+  font-size: 1.5rem;
+  font-style: normal;
+  line-height: 1.5;
+  @include mobile {
+    font-size: 1.8rem;
+    justify-content: center;
+  }
+  @include tablet {
+    justify-content: center;
+  }
+  .amount {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 680;
+    @include mobile {
+      font-weight: 800;
+    }
+  }
+
+  .currency {
+    font-size: 1.4ex;
+    margin-top: 3px;
+  }
+
+  .decimal {
+    font-size: 0.9rem;
+    align-self: flex-start;
+    margin-top: 3px;
+  }
+}

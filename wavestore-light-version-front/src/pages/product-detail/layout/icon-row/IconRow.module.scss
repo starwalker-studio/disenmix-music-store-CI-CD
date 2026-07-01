@@ -1,0 +1,31 @@
+.service_icons {
+    border-top: 1px solid #e0dfde;
+    display: block;
+    font-size: 0;
+    padding: 10px 0;
+    color: #5e6468;
+}
+
+.service_icons_items {
+    display: flex;
+}
+
+.item {
+    -webkit-box-flex: 1;
+    color: inherit;
+    display: flex;
+    font-size: .8rem;
+    font-weight: 600;
+    margin: -10px auto;
+    align-items: center;
+
+    span {
+        margin: 0 auto;
+        color: inherit;
+        font-size: 1.4rem;
+        font-weight: 600;
+        width: 42px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}

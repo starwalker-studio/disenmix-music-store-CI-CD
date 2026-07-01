@@ -1,0 +1,9 @@
+@use "main-constants" as const;
+
+:root {
+  --main-font-family: #{const.$main-font-family};
+  --main-color-primary: #{const.$main-color-primary};
+  --main-color-primary-dark: #{const.$main-color-primary-dark};
+  --main-color-primary-glow: #{const.$main-color-primary-glow};
+  --main-color-cart-float: #{const.$main-color-cart-float};
+}

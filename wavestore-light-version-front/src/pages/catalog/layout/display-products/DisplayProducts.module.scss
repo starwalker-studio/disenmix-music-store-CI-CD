@@ -1,0 +1,73 @@
+@use "/src/scss/utils/" as *;
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.grid_products {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: start;
+  @include tablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.top {
+  width: 100%;
+  border-bottom: 1px solid #d4d4d4;
+  color: #7a7a7a;
+  text-align: center;
+}
+
+.total_products {
+  padding: 18px 0 18px;
+  p {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 700;
+  }
+}
+
+.loading_spinner {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination_total {
+  font-size: 15.5px;
+  font-weight: 600;
+}
+
+.buttons {
+  color: #585858;
+  border-radius: 5px;
+  border-bottom-width: 1px;
+  background-color: #f7f7f7;
+  border-color: #f1f1f1;
+  font-size: 17px;
+  width: 30px;
+  height: 33px;
+
+  &:hover {
+    cursor: pointer;
+    color: #3f3f3f;
+    background-color: #eeeeee;
+    border-color: #eeeeee;
+  }
+}
+
+.bottom {
+  padding: 24.5px 0 11px;
+  text-align: center;
+  width: 100%;
+  z-index: 100;
+}

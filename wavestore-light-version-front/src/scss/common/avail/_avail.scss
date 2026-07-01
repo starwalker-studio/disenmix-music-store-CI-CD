@@ -1,0 +1,31 @@
+.product_avail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin: 20px 0 2px;
+}
+
+.avail_summary {
+  font-size: 1.25em;
+  margin: 0 5px 2px 0;
+  width: auto;
+  color: #3b7d1a;
+  font-weight: 600;
+  span {
+    margin: 0 5px 2px 0;
+  }
+}
+
+.avail_not_stock {
+  font-size: 1.25em;
+  margin: 0 5px 2px 0;
+  width: auto;
+  color: #971414;
+  font-weight: 600;
+
+  span {
+    margin: 0 5px 2px 0;
+  }
+}

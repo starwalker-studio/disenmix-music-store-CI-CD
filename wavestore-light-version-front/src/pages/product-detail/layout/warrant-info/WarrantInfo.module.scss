@@ -1,0 +1,31 @@
+.warranty_container {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  border-top: 1px solid #e0dfde;
+  margin: 0 auto;
+  max-width: 1450px;
+  padding: 50px 25px 25px;
+}
+
+.warranty_group {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.warranty_text {
+  line-height: 1.5em;
+  font-size: 16px;
+
+  span {
+    white-space: nowrap;
+  }
+}

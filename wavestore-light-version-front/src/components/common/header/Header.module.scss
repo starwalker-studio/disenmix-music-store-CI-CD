@@ -1,0 +1,56 @@
+@forward "/src/scss/mobile/header/";
+@use "/src/scss/utils/" as *;
+
+.site_header {
+  background-color: #d4d2d2;
+  width: 100%;
+  position: relative;
+  top: 0;
+  z-index: 999;
+}
+
+.header_container {
+  max-width: 1880px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  min-width: 320px;
+}
+
+.header_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1ex;  
+}
+
+.header_mobile_wrapper {
+  display: flex;
+  justify-items: space-between;
+  gap: 2ex;
+  padding: 1ex;
+}
+
+.header_menu {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  @include mobile {
+    justify-content: space-between;
+  }
+}
+
+.menu_logo {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0 16px;
+  img {
+    vertical-align: middle;
+    max-width: 100%;
+    display: inline-block;
+    width: 176px;
+  }
+}

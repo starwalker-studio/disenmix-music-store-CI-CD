@@ -1,0 +1,59 @@
+@use "/src/scss/utils/" as *;
+@forward "/src/scss/common/avail/";
+
+.product_action {
+  border-top: 1px solid #e0dfde;
+  margin-top: -1px;
+  padding: 10px 0 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  @include mobile {
+    align-items: center;
+    justify-content: center;
+  }
+  @include tablet {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+
+.product_action_cart {
+  margin: 15px 0;
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.product_button_cart {
+  max-width: 300px;
+  flex: auto;
+  width: 100%;
+
+  button {
+    transition: 0.2s;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 18px;
+    height: 52px;
+    line-height: 52px;
+    margin: 0 0 10px;
+    outline-offset: 2px;
+    padding: 0 25px;
+    width: 300px;
+    background-color: #3b7d1a;
+
+    &:hover {
+      background-color: #2d5c16;
+    }
+  }
+}
