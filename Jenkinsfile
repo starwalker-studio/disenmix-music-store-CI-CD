@@ -17,21 +17,21 @@ pipeline {
         stage('Construir imágenes') {
             steps {
                 echo 'Construyendo imágenes Docker...'
-                sh 'sudo docker compose -f ${COMPOSE_FILE_PROD} build'
+                sh 'docker compose -f ${COMPOSE_FILE_PROD} build'
             }
         }
 
         stage('Correr contenedores') {
             steps {
                 echo 'Levantando contenedores...'
-                sh 'sudo docker compose -f ${COMPOSE_FILE_PROD} up -d'
+                sh 'docker compose -f ${COMPOSE_FILE_PROD} up -d'
             }
         }
 
         stage('Verificar') {
             steps {
                 echo 'Verificando contenedores corriendo...'
-                sh 'sudo docker ps'
+                sh 'docker ps'
             }
         }
     }
