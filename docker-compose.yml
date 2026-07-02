@@ -1,27 +1,27 @@
 services:
-  frontend-prod:
-    build:
-      context: ./wavestore-light-version-front
-      dockerfile: Dockerfile
-    container_name: wavestore-website-prod
-    ports:
-      - "5173:80"
-    depends_on:
-      - nginx
-    networks:
-      - app-network
-
   nginx:
     build:
       context: .
       dockerfile: Dockerfile.nginx
     container_name: wavestore-nginx-prod
     ports:
-      - "8000:80"
+      - "80:80"
     volumes:
       - ./wavestore-backend-light-version:/var/www/html
+      - frontend-dist:/usr/share/nginx/html
     depends_on:
       - laravel-app
+      - frontend-prod
+    networks:
+      - app-network
+
+  frontend-prod:
+    build:
+      context: ./wavestore-light-version-front
+      dockerfile: Dockerfile
+    container_name: wavestore-website-prod
+    volumes:
+      - frontend-dist:/app/dist
     networks:
       - app-network
 
@@ -42,7 +42,7 @@ services:
     container_name: wavestore-mysql-prod
     environment:
       - MYSQL_ROOT_PASSWORD=secret
-      - MYSQL_DATABASE=db_wavestore_lt_version
+      - MYSQL_DATABASE=desinmix_php
     volumes:
       - mysql-data-prod:/var/lib/mysql
     networks:
@@ -54,3 +54,4 @@ networks:
 
 volumes:
   mysql-data-prod:
+  frontend-dist:
