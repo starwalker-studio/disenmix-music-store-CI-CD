@@ -33,6 +33,13 @@ pipeline {
             }
         }
 
+        stage('Limpiar contenedores anteriores') {
+            steps {
+                echo 'Bajando contenedores existentes...'
+                sh 'docker compose -f ${COMPOSE_FILE_PROD} down'
+            }
+        }
+
         stage('Correr contenedores') {
             steps {
                 echo 'Levantando contenedores...'
