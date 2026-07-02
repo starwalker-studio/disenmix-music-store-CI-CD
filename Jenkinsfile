@@ -14,6 +14,14 @@ pipeline {
             }
         }
 
+        stage('Preparar variables de entorno') {
+            steps {
+                withCredentials([file(credentialsId: 'wavestore-env-docker', variable: 'ENV_FILE')]) {
+                    sh 'cp $ENV_FILE wavestore-backend-light-version/.env.docker'
+                }
+            }
+        }
+
         stage('Construir imágenes') {
             steps {
                 echo 'Construyendo imágenes Docker...'
