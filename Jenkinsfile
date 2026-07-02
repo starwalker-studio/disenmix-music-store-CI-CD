@@ -17,7 +17,11 @@ pipeline {
         stage('Preparar variables de entorno') {
             steps {
                 withCredentials([file(credentialsId: 'wavestore-env-docker', variable: 'ENV_FILE')]) {
-                    sh 'cp $ENV_FILE wavestore-backend-light-version/.env.docker'
+                     sh '''
+                        chmod 755 wavestore-backend-light-version
+                        cp $ENV_FILE wavestore-backend-light-version/.env.docker
+                        chmod 600 wavestore-backend-light-version/.env.docker
+                    '''
                 }
             }
         }
