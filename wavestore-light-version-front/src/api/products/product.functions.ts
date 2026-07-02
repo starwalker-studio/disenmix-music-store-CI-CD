@@ -35,7 +35,8 @@ export async function searchProductByFilter(
   }
 
   const response = await fetch(
-    `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}/?${queryParams?.toString()}`,
+    `${SERVER_ENV.SERVER_HOST_DOCKER}${SERVER_ENV.PRODUCT}/?${queryParams?.toString()}`,
+    // `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}/?${queryParams?.toString()}`,
     // `${SERVER_ENV.SERVER_HOST_PROD}${SERVER_ENV.PRODUCT}?${queryParams?.toString()}`,
   );
 
@@ -46,7 +47,8 @@ export async function searchProductByFilter(
 
 export async function searchProductBrandsByCategory(id_category: number) {
   const response = await fetch(
-    `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_BRANDS_BY_CATEGORY}${id_category}`,
+    `${SERVER_ENV.SERVER_HOST_DOCKER}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_BRANDS_BY_CATEGORY}${id_category}`,
+    // `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_BRANDS_BY_CATEGORY}${id_category}`,
     // `${SERVER_ENV.SERVER_HOST_PROD}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_BRANDS_BY_CATEGORY}${id_category}`,
   );
 
@@ -57,7 +59,8 @@ export async function searchProductBrandsByCategory(id_category: number) {
 
 export async function searchProductPriceRange() {
   const response = await fetch(
-    `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_PRICE_RANGE}`,
+    `${SERVER_ENV.SERVER_HOST_DOCKER}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_PRICE_RANGE}`,
+    // `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_PRICE_RANGE}`,
     // `${SERVER_ENV.SERVER_HOST_PROD}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_PRICE_RANGE}`,
   );
 
@@ -68,7 +71,8 @@ export async function searchProductPriceRange() {
 
 export async function searchProductCategories() {
   const response = await fetch(
-    `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_CATEGORY}`,
+    `${SERVER_ENV.SERVER_HOST_DOCKER}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_CATEGORY}`,
+    // `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_CATEGORY}`,
     // `${SERVER_ENV.SERVER_HOST_PROD}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_CATEGORY}`,
   );
 
@@ -79,7 +83,8 @@ export async function searchProductCategories() {
 
 export async function searchProductDetail(item_ID: string) {
   const response = await fetch(
-    `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_DETAIL}${item_ID}`,
+    `${SERVER_ENV.SERVER_HOST_DOCKER}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_DETAIL}${item_ID}`,
+    // `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_DETAIL}${item_ID}`,
     // `${SERVER_ENV.SERVER_HOST_PROD}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_DETAIL}${item_ID}`,
   );
 
@@ -90,7 +95,8 @@ export async function searchProductDetail(item_ID: string) {
 
 export async function searchProductGallery(item_ID: string) {
   const response = await fetch(
-    `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_GALLERY}${item_ID}`,
+    `${SERVER_ENV.SERVER_HOST_DOCKER}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_GALLERY}${item_ID}`,
+    // `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_GALLERY}${item_ID}`,
     // `${SERVER_ENV.SERVER_HOST_PROD}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_GALLERY}${item_ID}`,
   );
 

@@ -8,7 +8,6 @@ services:
       - "80:80"
     volumes:
       - ./wavestore-backend-light-version:/var/www/html
-      - frontend-dist:/usr/share/nginx/html
     depends_on:
       - laravel-app
       - frontend-prod
@@ -20,8 +19,6 @@ services:
       context: ./wavestore-light-version-front
       dockerfile: Dockerfile
     container_name: wavestore-website-prod
-    volumes:
-      - frontend-dist:/app/dist
     networks:
       - app-network
 
@@ -54,4 +51,3 @@ networks:
 
 volumes:
   mysql-data-prod:
-  frontend-dist:

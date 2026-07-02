@@ -1,6 +1,7 @@
 export interface SERVER_TYPES {
   readonly SERVER_HOST_DEV: string;
   readonly SERVER_HOST_PROD: string;
+  readonly SERVER_HOST_DOCKER: string;
   readonly PRODUCT: string;
   readonly STORE: string;
   readonly END_POINTS: {
@@ -16,6 +17,7 @@ export interface SERVER_TYPES {
 export const SERVER_ENV: SERVER_TYPES = {
   SERVER_HOST_DEV: "http://localhost:8000/api",
   SERVER_HOST_PROD: "https://api.disenmix.com/api",
+  SERVER_HOST_DOCKER: "https://api.disenmix.com/api",
   PRODUCT: "/wavestore-product",
   STORE: "/store",
   END_POINTS: {
