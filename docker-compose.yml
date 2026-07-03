@@ -3,9 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.nginx
-    container_name: wavestore-nginx-prod
-    ports:
-      - "80:80"
+    container_name: wavestore-nginx-prod    
     volumes:
       - ./wavestore-backend-light-version:/var/www/html
     depends_on:
