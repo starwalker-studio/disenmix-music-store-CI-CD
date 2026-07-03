@@ -13,6 +13,7 @@ services:
       - frontend-prod
     networks:
       - app-network
+      - proxy-network
 
   frontend-prod:
     build:
@@ -21,6 +22,7 @@ services:
     container_name: wavestore-website-prod
     networks:
       - app-network
+      - proxy-network
 
   laravel-app:
     build:
@@ -48,6 +50,8 @@ services:
 networks:
   app-network:
     driver: bridge
+  proxy-network:
+    external: true 
 
 volumes:
   mysql-data-prod:
