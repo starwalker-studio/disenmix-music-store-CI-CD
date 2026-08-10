@@ -1,5 +1,6 @@
 import { faCartShopping, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ENV } from "../../../../api/config/env";
 import { useCartStore } from "../../../../api/store/cart.store";
 import { PriceFormat } from "../../../ui/price-format/PriceFormat";
 import style from "./CartItems.module.scss";
@@ -24,7 +25,7 @@ export const CartItems = () => {
           <div className={style.cart_item_container} key={item.item_ID}>
             <div className={style.cart_item}>
               <div className={style.cart_item_img}>
-                <img src={item.img} alt={item.model} />
+                <img src={`${ENV.PUBLIC_BASE_URL}/${item.img}`} alt={item.model} />
                 <p>
                   itemID: <span>{item.item_ID}</span>
                 </p>

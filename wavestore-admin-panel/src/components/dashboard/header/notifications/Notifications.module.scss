@@ -1,0 +1,91 @@
+
+.notification_container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  .bell_icon {
+    position: relative;
+    display: inline-block;
+    font-size: 2.1ex;
+
+    span {
+      position: absolute;
+      top: -8px;
+      /* Adjust as needed for vertical positioning */
+      right: -8px;
+      /* Adjust as needed for horizontal positioning */
+      background-color: rgb(41, 215, 18);
+      color: white;
+      border-radius: 50%;
+      /* Makes it a circle */
+      padding: 2px 7px;
+      /* Adjusts size and spacing */
+      font-size: 10px;
+      font-weight: bold;
+      display: flex;
+      /* Centers the number within the badge */
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .notification_box {
+    position: absolute;
+    top: 150%;
+    right: 0;
+    width: 360px;
+    background-color: rgb(242, 248, 255);;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.493);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    z-index: 1500;
+    opacity: 0;
+    animation: fadeIn 0.25s forwards ease-in-out;
+
+    h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding-bottom: 0.4rem;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: list-item;
+
+      li {
+        margin-bottom: 0.6rem;
+
+        p {
+          margin: 0;
+          font-size: 0.85rem;
+          // color: var(--text-color);
+        }
+
+        span {
+          font-size: 0.7rem;
+          color: #7a8a99;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+}

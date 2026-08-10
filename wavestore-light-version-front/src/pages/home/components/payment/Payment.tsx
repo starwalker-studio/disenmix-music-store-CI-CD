@@ -1,3 +1,4 @@
+import { ENV } from "../../../../api/config/env";
 import { Button } from "../../../../components/ui/button/Button";
 import style from "./Payment.module.scss";
 
@@ -8,7 +9,10 @@ export const Payment = () => {
         <div className={style.payment_wrapper}>
           <div className={style.payment_content}>
             <div className={style.payment_card}>
-              <img src="/img/payment/payment-card.jpg" alt="" />
+              <img
+                src={`${ENV.PUBLIC_BASE_URL}/img/payment/payment-card.jpg`}
+                alt=""
+              />
               <div className={style.payment_text}>
                 <h2>
                   Pay your way. We accept credit cards, debit cards, and more

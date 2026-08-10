@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ENV } from "../../../../api/config/env";
 import type { WavestoreProductImage } from "../../../../api/products/product.interface";
 import style from "./ProductMedia.module.scss";
 
@@ -21,7 +22,7 @@ export const ProductMedia = ({ gallery }: ProductMediaProps) => {
     <>
       <div className={style.product_media}>
         <div className={style.product_image_col}>
-          {urlSelected && <img src={urlSelected} alt="" />}
+          {urlSelected && <img src={`${ENV.PUBLIC_BASE_URL}/${urlSelected}`} alt="" />}
         </div>
         <div className={style.row_items}>
           {gallery.map(({ url, id }) => (
@@ -32,7 +33,7 @@ export const ProductMedia = ({ gallery }: ProductMediaProps) => {
                 setIdSelected(id);
               }}
             >
-              <img src={url} alt="" />
+              <img src={`${ENV.PUBLIC_BASE_URL}/${url}`} alt="" />
             </div>
           ))}
         </div>

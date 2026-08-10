@@ -1,0 +1,93 @@
+@forward "base/";
+@use "../scss/fonts/" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  @include open-sans-font;
+  background-color: var(--cffy-theme-surface-a0);
+  line-height: 1.6;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  @include nunito-font;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: var(--fw-bold);
+  line-height: 1.15;
+}
+
+h2 {
+  @include lato-regular-font;
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  font-weight: var(--fw-semibold);
+  line-height: 1.2;
+}
+
+h3 {
+  @include lato-light-font;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  line-height: 1.3;
+}
+
+h4 {
+  @include lato-thin-font;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.4;
+}
+
+h5 {
+  @include lato-thin-italic-font;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+}
+
+h6 {
+  @include lato-light-italic-font;
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  @include roboto-font;
+}
+
+input,
+select,
+textarea {
+  @include roboto-font;
+}

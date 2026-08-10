@@ -1,6 +1,7 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { ENV } from "../../../../../api/config/env";
 import { useCartStore } from "../../../../../api/store/cart.store";
 import { Button } from "../../../../../components/ui/button/Button";
 import { PriceFormat } from "../../../../../components/ui/price-format/PriceFormat";
@@ -18,7 +19,7 @@ export const ProductCard = ({ list, category, product }: ProductCardProps) => {
           <Link to={setProductDetailLink(category, item, product)}>
             <div className={style.card}>
               <img
-                src={`${item?.img}`}
+                src={`${ENV.PUBLIC_BASE_URL}/${item?.img}`}
                 className={style.card_img}
                 alt="product"
                 sizes="(min-width: 1440px) 215px, 140px"

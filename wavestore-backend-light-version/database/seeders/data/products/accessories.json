@@ -1,0 +1,68 @@
+[
+    {
+        "item_ID": "STCsMDlxBG",
+        "id_brand": 1,
+        "id_category": 4,
+        "model": "Fender Deluxe Molded Stratocaster/Telecaster Case",
+        "in_stock": true,
+        "description": "Deluxe Molded Hardshell Case with Plush Interior for Stratocaster or Telecaster Electric Guitars",
+        "product_info": "Transport and store your Stratocaster or Telecaster guitar in style with this Fender Deluxe Molded Strat/Tele Case, designed specifically for your instrument. Combining advanced materials with a new nested stacking design and a TSA-approved locking center latch, this case will help your guitar arrive at its destination unharmed. The large interior center pocket is the perfect place to stash accessories like picks, cable, and straps, while helping to stabilize the neck during transport. From the rock-solid military-grade outer shell to the comfortable handle and high-grade plush interior lining, this case's components have been engineered for hard-core instrument protection.",
+        "price": 249.99,
+        "img": "/img/items/accesories/guitar-case/STCsMDlxBG.webp"
+    },
+    {
+        "item_ID": "GX10",
+        "id_brand": 15,
+        "id_category": 4,
+        "model": "Boss GX-10 Multi Effects Processor",
+        "in_stock": true,
+        "description": "Guitar/Bass Multi-effects Pedal with Amp/Effects Modeling, Cabs, Mics, LCD, Expression Pedal, MIDI, Effects Loop, and USB-C Recording Interface",
+        "product_info": "Compact and eminently portable, the BOSS GX-10 multi-effects processor packs the same DSP core engine as the mighty GX-100 to deliver an ultra-authentic collection of amps and effects. There are 32 total (23 guitar and nine bass) immaculate amplifier emulations, providing you with a rich palette of tones worthy of a world-class studio locker, ranging from the iconic Roland JC-120 to vintage-era tube combos and even high-gain monsters from BOSS’s X amps series. Each amplifier features its own dedicated speaker/cab pairing, and you also get 16 custom slots to load in your favorite custom IRs. Combined with a sweeping set of classic BOSS effects, the GX-10’s nearly endless array of tones is a breeze to navigate and edit thanks to this pedal’s intuitive color LCD, customizable controls, and powerful Assign Matrix. Did we mention that the GX-10 also doubles in function as a top-class audio interface thanks to its USB-C functionality? Complete with an onboard expression pedal, an effects loop, a software editor, and expanded Bluetooth abilities with the optional BT-DUAL adapter, the BOSS GX-10 is, pound for pound, one of the most comprehensive processors you can find on the Sweetwater site, ready to serve as your stage-ready standby or the centerpiece of your studio.",
+        "price": 431.15,
+        "img": "/img/items/accesories/guitar-fx-pedal/GX10.webp"
+    },
+    {
+        "item_ID": "GS525B",
+        "id_brand": 16,
+        "id_category": 4,
+        "model": "Hercules Stands GS525B Multi-guitar Display Rack",
+        "in_stock": true,
+        "description": "Folding Guitar Rack for 5 Electric, Acoustic, or Bass Guitars",
+        "product_info": "Hercules Stands' GS525B portable guitar rack safely keeps your favorite guitars racked up and ready to roll. Ideal for the studio, stage, or home, countless Sweetwater players rely on the highly portable and versatile GS525B to support their acoustic, electric, and bass guitars. Specially formulated foam covers all contact points, with discs that separate your guitars and prevent them from touching. Yoke position is adjustable for a perfect fit, and each yoke features four pick slots for added convenience. Plus, the GS525B's folding one-piece design is easy to set up, transport, and store, making it perfect for securing your guitars at home or hitting the road.",
+        "price": 119.99,
+        "img": "/img/items/accesories/guitar-stand/GS525B.webp"
+    },
+    {
+        "item_ID": "74T000",
+        "id_brand": 17,
+        "id_category": 4,
+        "model": "D'Addario 3-inch Padded Woven Bass Guitar Strap",
+        "in_stock": true,
+        "description": "3' Padded Bass Guitar Strap, Adjustable 43' to 58",
+        "product_info": "D'Addario guitar straps let you play in comfort and style! Available in several colors, styles, and materials, D'Addario straps are made to last, giving you peace of mind when you strap on your favorite guitar or bass. These straps are available in a variety of materials, including leather, suede, and polypropylene. Whether you're looking for the ultimate in padded comfort, need eye-catching graphics for added onstage sizzle, or want a classic look to match your prized vintage axe, there's a D'Addario guitar strap that's perfect for you.",
+        "price": 25.99,
+        "img": "/img/items/accesories/guitar-strap/74T000.webp"
+    },
+    {
+        "item_ID": "NT1SigBlk",
+        "id_brand": 18,
+        "id_category": 4,
+        "model": "Rode NT1 Signature Series Condenser Microphone with SM6 Shockmount and Pop Filter",
+        "in_stock": true,
+        "description": "Large-diaphragm Condenser Cardioid Microphone with Shockmount, Pop Filter, and XLR Cable",
+        "product_info": "The NT1 Signature series microphone represents the pinnacle of Rode's iconic NT1 design, thoughtfully constructed and reasonably priced to fit the likes of any level studio environment. Its traditional large-diaphragm cardioid design is a coveted quality among a range of musicians, vocalists, and content creators. Further, an emphasis on low noise guarantees solid, versatile performance on any project. Bass-heavy vocals and high-end instrument tones are no threat to the NT1's wide 20Hz to 20kHz frequency range, ensuring crystalline occupancy over the entire audial spectrum. To top everything off, the NT1 Signature Series microphone includes an SM6 combination shockmount and pop filter, plus a 6-meter XLR cable for instant utility! If you're looking for a reliable, time-trusted microphone option at a fantastic price, look no further than the NT1 Signature series microphone from Rode.",
+        "price": 159.0,
+        "img": "/img/items/accesories/microphone-condenser/NT1SigBlk.webp"
+    },
+    {
+        "item_ID": "StroboClipHD",
+        "id_brand": 19,
+        "id_category": 4,
+        "model": "Peterson StroboClip HD High Definition Clip-on Strobe Tuner",
+        "in_stock": true,
+        "description": "Clip-on Strobe Headstock Tuner with HD Backlit LCD Display",
+        "product_info": "Wavestore instrument techs love Peterson mechanical and LCD strobe tuners because they provide legendary accuracy and reliability, session after session, year after year. The Peterson StroboClip HD LCD strobe tuner delivers that renowned precision (to a tenth of a cent) in a handy, small clip-on tuner with a detailed backlit display that's easy to read regardless of light levels. It also comes with over 50 Sweetened Tunings that are customized for specific instruments, and its soft rubber jaws are non-marring but firm enough to ensure maximum signal tracking. The StroboClip is housed in a black casing and is extremely durable for worry-free performance.",
+        "price": 59.99,
+        "img": "/img/items/accesories/tuner/StroboClipHD.webp"
+    }
+]

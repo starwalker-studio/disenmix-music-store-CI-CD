@@ -1,0 +1,47 @@
+@use "main-constants" as const;
+
+:root {
+  --nunito-font-family: #{const.$nunito-font-family};
+  --roboto-font-family: #{const.$roboto-font-family};
+  --open-sans-font-family: #{const.$open-sans-font-family};
+  --lato-font-family: #{const.$lato-font-family};
+  --logo-url: #{const.$logo-url};
+  --fw-light: #{const.$fw-light};
+  --fw-regular: #{const.$fw-regular};
+  --fw-medium: #{const.$fw-medium};
+  --fw-semibold: #{const.$fw-semibold};
+  --fw-bold: #{const.$fw-bold};
+  // color palette
+  --cffy-theme-light-a0: #{const.$cffy-theme-light-a0};
+  --cffy-theme-dark-a0: #{const.$cffy-theme-dark-a0};
+  --cffy-theme-primary-a0: #{const.$cffy-theme-primary-a0};
+  --cffy-theme-primary-a10: #{const.$cffy-theme-primary-a10};
+  --cffy-theme-primary-a20: #{const.$cffy-theme-primary-a20};
+  --cffy-theme-primary-a30: #{const.$cffy-theme-primary-a30};
+  --cffy-theme-primary-a40: #{const.$cffy-theme-primary-a40};
+  --cffy-theme-primary-a50: #{const.$cffy-theme-primary-a50};
+  --cffy-theme-surface-a0: #{const.$cffy-theme-surface-a0};
+  --cffy-theme-surface-a10: #{const.$cffy-theme-surface-a10};
+  --cffy-theme-surface-a20: #{const.$cffy-theme-surface-a20};
+  --cffy-theme-surface-a30: #{const.$cffy-theme-surface-a30};
+  --cffy-theme-surface-a40: #{const.$cffy-theme-surface-a40};
+  --cffy-theme-surface-a50: #{const.$cffy-theme-surface-a50};
+  --cffy-theme-surface-tonal-a0: #{const.$cffy-theme-surface-tonal-a0};
+  --cffy-theme-surface-tonal-a10: #{const.$cffy-theme-surface-tonal-a10};
+  --cffy-theme-surface-tonal-a20: #{const.$cffy-theme-surface-tonal-a20};
+  --cffy-theme-surface-tonal-a30: #{const.$cffy-theme-surface-tonal-a30};
+  --cffy-theme-surface-tonal-a40: #{const.$cffy-theme-surface-tonal-a40};
+  --cffy-theme-surface-tonal-a50: #{const.$cffy-theme-surface-tonal-a50};
+  --cffy-theme-success-a0: #{const.$cffy-theme-success-a0};
+  --cffy-theme-success-a10: #{const.$cffy-theme-success-a10};
+  --cffy-theme-success-a20: #{const.$cffy-theme-success-a20};
+  --cffy-theme-warning-a0: #{const.$cffy-theme-warning-a0};
+  --cffy-theme-warning-a10: #{const.$cffy-theme-warning-a10};
+  --cffy-theme-warning-a20: #{const.$cffy-theme-warning-a20};
+  --cffy-theme-danger-a0: #{const.$cffy-theme-danger-a0};
+  --cffy-theme-danger-a10: #{const.$cffy-theme-danger-a10};
+  --cffy-theme-danger-a20: #{const.$cffy-theme-danger-a20};
+  --cffy-theme-info-a0: #{const.$cffy-theme-info-a0};
+  --cffy-theme-info-a10: #{const.$cffy-theme-info-a10};
+  --cffy-theme-info-a20: #{const.$cffy-theme-info-a20};
+}

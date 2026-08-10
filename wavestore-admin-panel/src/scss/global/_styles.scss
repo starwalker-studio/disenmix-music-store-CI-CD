@@ -1,0 +1,43 @@
+@mixin page_header {
+  display: flex;
+  flex-direction: column;
+  gap: 1ex;
+  padding: 0 1.5rem;
+  .header_breadcrumbs {
+    display: flex;
+    font-size: 0.85rem;
+    align-items: center;
+  }
+  .header_breadcrumbs li + li::before {
+    content: ">";
+    padding: 0 0.85rem;
+  }
+}
+
+@mixin section {
+  width: 100%;
+  position: relative;
+}
+
+@mixin wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+@mixin container {
+  position: relative;
+  width: 100%;
+  padding: 1.3ex 0;
+}
+
+@mixin content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 2rem;
+}
+
+@mixin border-radius-20 {
+  border-radius: 20px;
+}

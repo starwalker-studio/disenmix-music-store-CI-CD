@@ -27,7 +27,7 @@
 
 .hero_section {
   @include background-section-style;
-  background-image: url("/hero/hero.jpg");
+  background-image: url("http://localhost:8000/hero/hero.jpg");
   height: 72vh;
   height: 72dvh;
   @include mobile {

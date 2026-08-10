@@ -1,0 +1,106 @@
+@forward "/src/scss/base/";
+
+.simplebar_content {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+
+  .simplebar_list {
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+    padding-left: 40px;
+    padding-right: 23px;
+  }
+
+  ul {
+    display: block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    font-size: 0.895rem;
+    position: relative;
+  }
+
+  .item {
+    color: #fff;
+    position: relative;
+    display: block;
+    padding-left: 40px;
+    padding-right: 23px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-decoration: none;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    position: relative;
+    text-transform: uppercase;
+
+    .chevron {
+      margin-left: 10px;
+      font-size: 0.7rem;
+      transition: transform 0.2s ease;
+    }
+
+    .chevron_open {
+      transform: rotate(180deg);
+    }
+
+    &:hover {
+      background-color: var(--cffy-theme-surface-a30);
+    }
+
+    span {
+      font-size: 14px;
+      margin-right: 1.2rem;
+    }
+
+    &.item_active {
+      background-color: var(--cffy-theme-surface-a20);
+      border-right: 2px solid var(--cffy-theme-primary-a0);
+      color: var(--cffy-theme-primary-a0);
+    }
+  }
+  .submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  .submenu_open {
+    max-height: 200px;
+  }
+
+  .subitem {
+    display: block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 4.85rem;
+    padding-right: 23px;
+    font-size: 0.78rem;
+    color: var(--cffy-theme-surface-a50);
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+
+    &:hover {
+      background-color: var(--cffy-theme-surface-a30);
+      color: #fff;
+    }
+  }
+}

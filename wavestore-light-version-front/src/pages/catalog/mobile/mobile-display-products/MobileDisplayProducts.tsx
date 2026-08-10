@@ -2,6 +2,7 @@ import { faCheck, faSliders } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { ENV } from "../../../../api/config/env";
 import { useCartStore } from "../../../../api/store/cart.store";
 import { Button } from "../../../../components/ui/button/Button";
 import { PriceFormat } from "../../../../components/ui/price-format/PriceFormat";
@@ -71,7 +72,7 @@ export const MobileDisplayProducts = ({
                 <div className={style.product_card} key={item.id}>
                   <Link to={setProductDetailLink(category, item, product)}>
                     <div className={style.product_img}>
-                      <img src={`${item?.img}`} alt="" />
+                      <img src={`${ENV.PUBLIC_BASE_URL}/${item?.img}`} alt="" />
                     </div>
                   </Link>
                   <div className={style.product_info}>

@@ -1,0 +1,21 @@
+.dashboard_container {
+    position: relative;
+    min-height: calc(100vh - 135px);
+    margin-left: 284px;
+    transform: translateX(0px);
+    transition: all 0.3s ease;
+    // @include mobile {
+    //     margin-left: 0;
+    // }
+    
+    &.wide_dashboard {
+        transform: translateX(-280px);
+    }
+}
+
+.dashboard_content {
+    padding: .5rem 1rem;
+    // @include mobile {
+    //     padding: .70rem;
+    // }
+}

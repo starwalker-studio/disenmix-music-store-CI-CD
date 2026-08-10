@@ -15,7 +15,7 @@ class WavestoreCategorySeeder extends Seeder
     {
         $categories = [
             ['name' => 'Guitars',     'slug' => 'guitars',     'img' => '/img/categories/ENCTEBGH.webp'],
-            ['name' => 'Bass',      'slug' => 'basses',      'img' => '/img/categories/PBassAPR3SB.webp'],
+            ['name' => 'Bass',      'slug' => 'bass',      'img' => '/img/categories/PBassAPR3SB.webp'],
             ['name' => 'Drums & Percussion',       'slug' => 'drums',       'img' => '/img/categories/LM402.webp'],
             ['name' => 'Cables, Cases & More', 'slug' => 'accessories', 'img' => '/img/categories/M4WP006.webp'],
         ];

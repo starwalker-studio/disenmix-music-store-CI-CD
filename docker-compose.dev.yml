@@ -23,10 +23,34 @@ services:
     networks:
       - app-network
 
+  admin-dev:
+    build:
+      context: ./wavestore-admin-panel
+      dockerfile: Dockerfile.dev
+    container_name: wavestore-admin-panel-dev
+    ports:
+      - "5174:5173"
+    volumes:
+      - ./wavestore-admin-panel/src:/app/src
+      - ./wavestore-admin-panel/public:/app/public
+      - ./wavestore-admin-panel/index.html:/app/index.html
+      - ./wavestore-admin-panel/vite.config.ts:/app/vite.config.ts
+      - ./wavestore-admin-panel/tsconfig.json:/app/tsconfig.json
+      - ./wavestore-admin-panel/tsconfig.app.json:/app/tsconfig.app.json
+      - ./wavestore-admin-panel/tsconfig.node.json:/app/tsconfig.node.json
+      - ./wavestore-admin-panel/eslint.config.js:/app/eslint.config.js
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - frontend-dev
+    networks:
+      - app-network
+
   nginx:
     build:
       context: .
-      dockerfile: Dockerfile.nginx
+      dockerfile: Dockerfile.nginx.dev
     container_name: wavestore-nginx-dev
     ports:
       - "8000:80"
@@ -54,6 +78,8 @@ services:
   mysql:
     image: mysql:8.0
     container_name: wavestore-mysql-dev
+    ports:
+      - "3307:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=secret
       - MYSQL_DATABASE=db_wavestore_lt_version

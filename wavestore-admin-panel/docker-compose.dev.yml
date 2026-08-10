@@ -1,0 +1,22 @@
+services:
+  admin-dev:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: wavestore-admin-panel-dev
+    ports:
+      - "5174:5173"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./index.html:/app/index.html
+      - ./vite.config.ts:/app/vite.config.ts
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./tsconfig.app.json:/app/tsconfig.app.json
+      - ./tsconfig.node.json:/app/tsconfig.node.json
+      - ./eslint.config.js:/app/eslint.config.js
+      - ./.env:/app/.env
+      - ./.env.development:/app/.env.development
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development

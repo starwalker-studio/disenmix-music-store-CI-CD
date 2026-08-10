@@ -1,0 +1,84 @@
+@forward "../base/";
+
+@mixin nunito-font {
+  font-family: var(--nunito-font-family);
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@mixin open-sans-font {
+  font-family: var(--open-sans-font-family);
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+@mixin roboto-font {
+  font-family: var(--roboto-font-family);
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+@mixin lato-thin-font {
+  font-family: var(--lato-font-family);
+  font-weight: 100;
+  font-style: normal;
+}
+
+@mixin lato-light-font {
+  font-family: var(--lato-font-family);
+  font-weight: 300;
+  font-style: normal;
+}
+
+@mixin lato-regular-font {
+  font-family: var(--lato-font-family);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin lato-bold-font {
+  font-family: var(--lato-font-family);
+  font-weight: 700;
+  font-style: normal;
+}
+
+@mixin lato-black-font {
+  font-family: var(--lato-font-family);
+  font-weight: 900;
+  font-style: normal;
+}
+
+@mixin lato-thin-italic-font {
+  font-family: var(--lato-font-family);
+  font-weight: 100;
+  font-style: italic;
+}
+
+@mixin lato-light-italic-font {
+  font-family: var(--lato-font-family);
+  font-weight: 300;
+  font-style: italic;
+}
+
+@mixin lato-regular-italic-font {
+  font-family: var(--lato-font-family);
+  font-weight: 400;
+  font-style: italic;
+}
+
+@mixin lato-bold-italic-font {
+  font-family: var(--lato-font-family);
+  font-weight: 700;
+  font-style: italic;
+}
+
+@mixin lato-black-italic-font {
+  font-family: var(--lato-font-family);
+  font-weight: 900;
+  font-style: italic;
+}

@@ -15,6 +15,8 @@ services:
       - ./tsconfig.app.json:/app/tsconfig.app.json
       - ./tsconfig.node.json:/app/tsconfig.node.json
       - ./eslint.config.js:/app/eslint.config.js
+      - ./.env:/app/.env
+      - ./.env.development:/app/.env.development
       - /app/node_modules
     environment:
       - NODE_ENV=development

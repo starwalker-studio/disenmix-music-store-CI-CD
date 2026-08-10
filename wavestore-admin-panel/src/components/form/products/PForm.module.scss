@@ -1,0 +1,197 @@
+@forward "/src/scss/base";
+@use "/src/scss/global" as *;
+
+.form_card {
+  background-color: var(--cffy-theme-surface-a10);
+  padding: 2.4rem 2.4rem;
+  width: 100%;
+  @include border-radius-20;
+}
+
+.form_header {
+  padding-bottom: 1.4rem;
+  h5 {
+    font-size: 1.4rem;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  span {
+    padding-top: 0.6rem;
+    font-size: 0.85rem;
+  }
+  //   max-width: 1020px;
+}
+
+.form_row_ID {
+  display: grid;
+  grid-template-columns: 0.325fr 1fr;
+  width: 100%;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.form_row_brand_catego {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr 1fr;
+  width: 100%;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.form_row_stock_price {
+  display: flex;
+  gap: 1.2rem;
+  width: 100%;
+  margin-bottom: 1.3rem;
+  justify-content: start;
+  align-items: center;
+}
+
+.form_input_file {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  .blocked {
+    background-color: var(--cffy-theme-surface-a10);
+    border: 1px solid var(--cffy-theme-surface-a30);
+  }
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  input[type="text"],
+  textarea,
+  select {
+    background-color: var(--cffy-theme-surface-a20);
+    border: 1px solid var(--cffy-theme-surface-a30);
+    border-radius: 8px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.9rem;
+    color: #fff;
+    outline: none;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    &:focus {
+      border-color: var(--cffy-theme-primary-a0);
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+    resize: none;
+  }
+
+  select {
+    cursor: pointer;
+
+    option {
+      background-color: #1a1d29; // fondo del dropdown en navegadores que lo respetan
+      color: #fff;
+    }
+  }
+}
+// Input de archivo custom (oculta el input feo del navegador)
+.file_input {
+  position: relative;
+
+  input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .file_label {
+    display: block;
+    background-color: var(--cffy-theme-surface-a20);
+    border: 1px solid var(--cffy-theme-surface-a30);
+    border-radius: 8px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+  }
+  .error {
+    border: 1px solid var(--cffy-theme-danger-a0);
+  }
+  
+  .blocked {
+    background-color: var(--cffy-theme-surface-a10);
+    border: 1px solid var(--cffy-theme-surface-a30);
+  }
+}
+
+.submit_button {
+  align-self: flex-end;
+  background-color: var(--cffy-theme-primary-a0);
+  border: 1px solid var(--cffy-theme-primary-a10);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.file_label_disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 0.2rem;
+}
+
+.error {
+  width: 100%;
+  color: var(--cffy-theme-danger-a0);
+  input[type="text"],
+  select {
+    border: 1px solid var(--cffy-theme-danger-a0);
+  }
+}
+
+.success {
+  width: 100%;
+  color: var(--cffy-theme-success-a0);
+  input[type="text"],
+  select {
+    border: 1px solid var(--cffy-theme-success-a0);
+  }
+}

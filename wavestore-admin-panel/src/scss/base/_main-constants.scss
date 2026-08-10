@@ -1,0 +1,55 @@
+$nunito-font-family: "Nunito", sans-serif;
+$roboto-font-family: "Roboto", sans-serif;
+$open-sans-font-family: "Open Sans", sans-serif;
+$lato-font-family: "Lato", sans-serif;
+
+$logo-url: url(/logo/wavestore-logo.svg);
+
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+// color palette
+
+/** Base text colors */
+$cffy-theme-light-a0: #ffffff;
+$cffy-theme-dark-a0: #000000;
+/** Theme primary colors */
+$cffy-theme-primary-a0: #fd7c26;
+$cffy-theme-primary-a10: #ff8b46;
+$cffy-theme-primary-a20: #ff995f;
+$cffy-theme-primary-a30: #ffa675;
+$cffy-theme-primary-a40: #ffb389;
+$cffy-theme-primary-a50: #ffc09d;
+/** Theme surface colors */
+$cffy-theme-surface-a0: #121212;
+$cffy-theme-surface-a10: #252525;
+$cffy-theme-surface-a20: #393939;
+$cffy-theme-surface-a30: #4f4f4f;
+$cffy-theme-surface-a40: #666;
+$cffy-theme-surface-a50: #7d7d7d;
+/** Theme tonal surface colors */
+$cffy-theme-surface-tonal-a0: #261c17;
+$cffy-theme-surface-tonal-a10: #382f2a;
+$cffy-theme-surface-tonal-a20: #4c433e;
+$cffy-theme-surface-tonal-a30: #605854;
+$cffy-theme-surface-tonal-a40: #756d6a;
+$cffy-theme-surface-tonal-a50: #8b8481;
+/** Success colors */
+$cffy-theme-success-a0: #7dff95;
+$cffy-theme-success-a10: #9dffac;
+$cffy-theme-success-a20: #b8ffc1;
+/** Warning colors */
+$cffy-theme-warning-a0: #ffbc5e;
+$cffy-theme-warning-a10: #ffca83;
+$cffy-theme-warning-a20: #ffd8a4;
+/** Danger colors */
+$cffy-theme-danger-a0: #ff8080;
+$cffy-theme-danger-a10: #ff9b99;
+$cffy-theme-danger-a20: #ffb5b2;
+/** Info colors */
+$cffy-theme-info-a0: #87d1ff;
+$cffy-theme-info-a10: #a1dbff;
+$cffy-theme-info-a20: #b9e4ff;

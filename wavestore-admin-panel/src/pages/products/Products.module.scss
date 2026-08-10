@@ -1,0 +1,20 @@
+@use "/src/scss/global" as *;
+
+.product_section {
+  @include section;
+}
+
+.product_wrapper {
+  @include wrapper;
+}
+
+.product_container {
+  @include container;
+}
+
+.product_content {
+  @include content;
+  .header {
+    @include page_header;
+  }
+}

@@ -12,9 +12,10 @@ mkdir -p storage/framework/cache/data
 mkdir -p storage/framework/sessions
 mkdir -p storage/logs
 mkdir -p bootstrap/cache
+mkdir -p public/img
 
-chown -R www-data:www-data storage bootstrap/cache
-chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache public/img
+chmod -R 775 storage bootstrap/cache public/img
 
 php artisan migrate --force
 

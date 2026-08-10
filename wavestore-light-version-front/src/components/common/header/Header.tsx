@@ -1,6 +1,7 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
+import { ENV } from "../../../api/config/env";
 import { HEADER_ENV } from "../../../env/header.env";
 import { useMobileScreen } from "../../../hooks/useMobileScreen";
 import { Button } from "../../ui/button/Button";
@@ -18,7 +19,7 @@ export const Header = () => {
             <header className={style.header_menu}>
               <div className={style.menu_logo}>
                 <NavLink to={"/"}>
-                  <img src={HEADER_ENV.LOGO} alt="" />
+                  <img src={`${ENV.PUBLIC_BASE_URL}/${HEADER_ENV.LOGO}`} alt="" />
                 </NavLink>
               </div>
               {isMobileScreen() ? (

@@ -1,0 +1,164 @@
+@forward "/src/scss/base";
+@use "/src/scss/global" as *;
+
+.table_card {
+  background-color: var(--cffy-theme-surface-a10);
+  padding: 2rem 2rem;
+  width: 100%;
+  @include border-radius-20;
+}
+
+.table_wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: var(--cffy-theme-surface-a20, #1a1d29);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.78rem;
+
+  thead {
+    background-color: var(--cffy-theme-surface-a0);
+
+    th {
+      text-align: left;
+      padding: 0.9rem 1.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.5);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      white-space: nowrap;
+    }
+  }
+
+  tbody {
+    tr {
+      transition: background-color 0.2s ease;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--cffy-theme-surface-a10);
+    }
+
+    td {
+      padding: 0.9rem 1.25rem;
+      vertical-align: middle;
+    }
+  }
+}
+
+.item_img {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  img {
+    border-radius: 8px;
+    height: 70px;
+    display: block;
+    object-fit: contain;
+    opacity: 0.85;
+  }
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  white-space: nowrap;
+  width: fit-content;
+
+  // &::before {
+  //   content: "";
+  //   width: 6px;
+  //   height: 6px;
+  //   border-radius: 50%;
+  //   background-color: currentColor;
+  //   flex-shrink: 0;
+  // }
+}
+
+.status_active {
+  color: #4ade80;
+  background-color: rgba(74, 222, 128, 0.205);
+}
+
+.status_inactive {
+  color: #f87171;
+  background-color: rgba(248, 113, 113, 0.205);
+}
+
+.state_message {
+  padding: 2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+.actions_cell {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap; // evita que los botones se envuelvan en varias líneas
+}
+
+.action_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Modificadores opcionales para dar contexto de color en hover
+.action_view:hover {
+  color: #60a5fa; // azul, acción neutral de "consultar"
+  background-color: rgba(96, 165, 250, 0.12);
+}
+
+.action_edit:hover {
+  color: #fbbf24; // amarillo/ámbar, acción de "modificar"
+  background-color: rgba(251, 191, 36, 0.12);
+}
+
+.action_deactivate:hover {
+  color: #f87171; // rojo, acción sensible aunque sea soft delete
+  background-color: rgba(248, 113, 113, 0.12);
+}

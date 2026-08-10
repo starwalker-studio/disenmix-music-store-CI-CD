@@ -5,15 +5,17 @@ namespace App\Http\Controllers\products;
 use App\Http\Controllers\Controller;
 use App\Models\product\WavestoreProduct;
 use App\Services\product\ProductService;
+use BcMath\Number;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class WavestoreProductController extends Controller
 {
     public function productIndex(Request $request)
     {
-        $perPage = (int) $request->input('perPage', 10);
+        $perPage = (int) $request->input('perPage', 12);
 
-        $query = WavestoreProduct::with('brand')->orderBy('id_brand', 'asc');
+        $query = WavestoreProduct::with('brand', 'category')->orderBy('id_brand', 'asc');
 
         $filters = $request->only([
             'id_category',
@@ -28,6 +30,43 @@ class WavestoreProductController extends Controller
         $paginator = $query->paginate($perPage);
 
         return response()->json($paginator);
+    }
+
+    public function createProduct(Request $request)
+    {
+        $validated = $request->validate([
+            'item_ID'       =>  'required|string|unique:wavestore_products,item_ID',
+            'id_brand'      =>  'required|integer|exists:wavestore_brand,id',
+            'id_category'   =>  'required|integer|exists:wavestore_category,id',
+            'model'         =>  'required|string|max:255',
+            'in_stock'      =>  'required|boolean',
+            'description'   =>  'required|string',
+            'product_info'  =>  'required|string',
+            'price'         =>  'required|numeric',
+            'img'           =>  'required|string',
+            'imgPath'       =>  'required|string',
+            'imgData'       =>  'required|image|max:2048',
+        ]);
+        $diskPath = public_path($validated['imgPath']);
+        if (!File::isDirectory($diskPath)) {
+            File::makeDirectory($diskPath, 0755, true);
+        }
+        $fileName = basename($validated['img']);
+        $request->file('imgData')->move($diskPath, $fileName);
+        $productData = collect($validated)->except(['imgPath', 'imgData'])->toArray();
+        $product = WavestoreProduct::create($productData);
+        if ($product) {
+            return response()->json([
+                'message'   => 'Product created successfully!',
+                'data'      => $product,
+                'isCreated' => true,
+            ], 201);
+        }
+
+        return response()->json([
+            'message'   => 'Not created!',
+            'isCreated' => false,
+        ], 500);
     }
 
     public function showItemID(WavestoreProduct $wavestoreProduct)
@@ -53,5 +92,14 @@ class WavestoreProductController extends Controller
         return response()->json(
             ProductService::distinctCategory($idCategory)
         );
+    }
+
+    public function checkItemId(string $item_ID)
+    {
+        $exists = WavestoreProduct::where('item_ID', $item_ID)->exists();
+
+        return response()->json([
+            'available' => !$exists,
+        ]);
     }
 }

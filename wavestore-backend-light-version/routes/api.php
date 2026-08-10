@@ -18,8 +18,12 @@ Route::prefix('wavestore-product')->group(function () {
     Route::get('/categories', [WavestoreCategoryController::class, 'categoryIndex']);
     Route::get('/images/{itemID}', [WavestoreProductImagesController::class, 'galleryProductByItemID'])
         ->where('itemID', '[A-Za-z0-9\-]+');
+    // routes/api.php
+    Route::get('/check-item-id/{item_ID}', [WavestoreProductController::class, 'checkItemId']);
+    Route::post('/add-product', [WavestoreProductController::class, 'createProduct']);
+    Route::post('/add-product-gallery', [WavestoreProductImagesController::class, 'createGalleryProduct']);
 });
 
-Route::prefix('store')->group(function() {
+Route::prefix('store')->group(function () {
     Route::post('/checkout', [CheckoutController::class, 'createPaymentIntent']);
 });
