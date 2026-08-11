@@ -1,23 +1,21 @@
+import type { WavestoreProduct } from "../../../api/products/product.interface";
 import { FormCategoryBrandFields } from "./layout/FormCategoryBrandFields";
 import { FormInputFileFileds } from "./layout/FormInputFileFileds";
 import { FormItemIDFields } from "./layout/FormItemIDFields";
 import { ShowSuccessModal } from "./layout/show-product-success-modal/ShowSuccessModal";
 import style from "./PForm.module.scss";
 import { useFormProduct } from "./ts/form-functions";
-import type { ExistingProduct } from "./ts/form-product.interface";
 
 interface ProductFormProps {
   mode: "add" | "edit";
-  initialData?: ExistingProduct; // solo se pasa en modo "edit"
-  onSuccess?: () => void; // callback opcional, ej. cerrar modal o redirigir
+  initialData?: WavestoreProduct;
 }
 
-export const PForm = ({ mode, initialData, onSuccess }: ProductFormProps) => {
+export const PForm = ({ mode, initialData }: ProductFormProps) => {
   const {
     formData,
     isFields,
     submitting,
-    fileName,
     errors,
     categories,
     brands,
@@ -30,7 +28,7 @@ export const PForm = ({ mode, initialData, onSuccess }: ProductFormProps) => {
     productDetail,
     loadingProductDetail,
     setSuccess,
-  } = useFormProduct();
+  } = useFormProduct(mode, initialData);
 
   return (
     <>
@@ -42,7 +40,11 @@ export const PForm = ({ mode, initialData, onSuccess }: ProductFormProps) => {
       />
       <div className={style.form_card}>
         <div className={style.form_header}>
-          <h5>Add a new product to your store</h5>
+          <h3>
+            {mode === "add"
+              ? "Add a new product to your store"
+              : `${initialData?.model}`}
+          </h3>
         </div>
         <form className={style.form} onSubmit={handleSubmit}>
           <FormItemIDFields
@@ -51,6 +53,8 @@ export const PForm = ({ mode, initialData, onSuccess }: ProductFormProps) => {
             style={style}
             error={errors.itemID}
             itemIdStatus={itemIdStatus}
+            mode={mode}
+            initialData={initialData}
           />
           <FormCategoryBrandFields
             formData={formData}
@@ -59,6 +63,7 @@ export const PForm = ({ mode, initialData, onSuccess }: ProductFormProps) => {
             brands={brands}
             categories={categories}
             error={errors.selectedInputs}
+            mode={mode}
           />
           <div className={style.field}>
             <label htmlFor="product_info">Product Info</label>
@@ -79,7 +84,6 @@ export const PForm = ({ mode, initialData, onSuccess }: ProductFormProps) => {
             isFields={isFields}
             initialData={initialData}
             mode={mode}
-            fileName={fileName}
             handleFileChange={handleFileChange}
             handleChangeFiveFiles={handleChangeFiveFiles}
             error={errors.files}

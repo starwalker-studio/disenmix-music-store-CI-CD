@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { ENV } from "../../../../api/config/env";
 import type { FormFieldsProps } from "../ts/form-product.interface";
 
 export const FormInputFileFileds = ({
@@ -6,7 +7,6 @@ export const FormInputFileFileds = ({
   isFields,
   initialData,
   mode,
-  fileName,
   handleFileChange,
   handleChangeFiveFiles,
   error,
@@ -24,16 +24,6 @@ export const FormInputFileFileds = ({
           >
             Product Image
           </label>
-
-          {/* En modo edit, muestra la imagen actual como referencia */}
-          {mode === "edit" && initialData?.img && !fileName && (
-            <img
-              src={initialData.img}
-              alt="Imagen actual"
-              className={style.preview}
-            />
-          )}
-
           <div className={style.file_input}>
             <label
               htmlFor="image"
@@ -43,8 +33,7 @@ export const FormInputFileFileds = ({
                 error && style.error,
               )}
             >
-              {fileName ||
-                (mode === "edit" ? "Change file..." : "Select file...")}
+              {mode === "edit" ? "Change file..." : "Select file..."}
             </label>
             <input
               type="file"
@@ -55,6 +44,15 @@ export const FormInputFileFileds = ({
               disabled={!isFields}
             />
           </div>
+          {/* En modo edit, muestra la imagen actual como referencia */}
+          {mode === "edit" && initialData?.img && (
+            <div className={style.preview}>
+              <img
+                src={`${ENV.PUBLIC_BASE_URL}${initialData.img}`}
+                alt="Imagen actual"
+              />
+            </div>
+          )}
         </div>
         <div className={style.field}>
           <label
@@ -67,15 +65,6 @@ export const FormInputFileFileds = ({
             Product Gallery
           </label>
 
-          {/* En modo edit, muestra la imagen actual como referencia */}
-          {mode === "edit" && initialData?.img && !fileName && (
-            <img
-              src={initialData.img}
-              alt="Imagen actual"
-              className={style.preview}
-            />
-          )}
-
           <div className={style.file_input}>
             <label
               htmlFor="gallery"
@@ -85,8 +74,7 @@ export const FormInputFileFileds = ({
                 error && style.error,
               )}
             >
-              {fileName ||
-                (mode === "edit" ? "Change files..." : "Select files...")}
+              {mode === "edit" ? "Change files..." : "Select files..."}
             </label>
             <input
               type="file"
@@ -98,6 +86,15 @@ export const FormInputFileFileds = ({
               disabled={!isFields}
             />
           </div>
+          {/* En modo edit, muestra la imagen actual como referencia */}
+          {mode === "edit" && initialData?.img && (
+            <div className={style.preview}>
+              <img
+                src={`${ENV.PUBLIC_BASE_URL}${initialData.img}`}
+                alt="Imagen actual"
+              />
+            </div>
+          )}
         </div>
       </div>
       {error && <span className={style.error}>{error}</span>}

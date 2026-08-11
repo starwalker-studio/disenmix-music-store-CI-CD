@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import type { WavestoreProduct } from "../../../../api/products/product.interface";
 import { useProductStore } from "../../../../api/store/product.store";
 import type { ProductFormData } from "./form-product.interface";
 
-export const useFormProduct = () => {
+export const useFormProduct = (
+  mode: string,
+  initialData?: WavestoreProduct,
+) => {
   const REQUIRED_GALLERY_IMAGES = 5;
 
   const {
@@ -18,7 +22,6 @@ export const useFormProduct = () => {
     loadingProductDetail,
   } = useProductStore();
 
-  const [fileName, setFileName] = useState<string>("");
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [isFields, setIsFields] = useState<boolean>(false);
@@ -34,22 +37,43 @@ export const useFormProduct = () => {
     files?: string;
   }>({});
 
-  const [formData, setFormData] = useState<ProductFormData>({
-    item_ID: "",
-    id_brand: 0,
-    id_category: 0,
-    model: "",
-    in_stock: true,
-    description: "",
-    product_info: "",
-    price: "",
-    img: "",
-    gallery: [],
-    imgData: null,
-    galleryData: [],
-    imgPath: "",
-    galleryPath: "",
-  });
+  const [formData, setFormData] = useState<ProductFormData>(
+    mode === "add" || !initialData
+      ? {
+          item_ID: "",
+          id_brand: 0,
+          id_category: 0,
+          model: "",
+          in_stock: true,
+          description: "",
+          product_info: "",
+          price: "",
+          img: "",
+          gallery: [],
+          imgData: null,
+          galleryData: [],
+          imgPath: "",
+          galleryPath: "",
+        }
+      : {
+          item_ID: initialData.item_ID,
+          id_brand: initialData.brand?.id ? initialData.brand?.id : 0,
+          id_category: initialData.category?.id ? initialData.category?.id : 0,
+          model: initialData.model,
+          in_stock: initialData.in_stock,
+          description: initialData.description,
+          product_info: initialData.product_info
+            ? initialData.product_info
+            : "",
+          price: initialData.price,
+          img: initialData.img ? initialData.img : "",
+          gallery: [],
+          imgData: null,
+          galleryData: [],
+          imgPath: "",
+          galleryPath: "",
+        },
+  );
 
   const areRequiredFieldsComplete = (data: ProductFormData): boolean => {
     return (
@@ -274,20 +298,21 @@ export const useFormProduct = () => {
   useEffect(() => {
     const itemId = formData.item_ID.trim();
     if (!itemId) return;
-    const timeoutId = setTimeout(async () => {
-      const isAvailable = await fetchCheckItemID(itemId);
-      setItemIdStatus(isAvailable ? "available" : "taken");
-    }, 500);
+    if (mode === "add") {
+      const timeoutId = setTimeout(async () => {
+        const isAvailable = await fetchCheckItemID(itemId);
+        setItemIdStatus(isAvailable ? "available" : "taken");
+      }, 500);
 
-    return () => clearTimeout(timeoutId); // cancela el timer anterior si el usuario sigue escribiendo
-  }, [formData.item_ID]);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [formData.item_ID, mode]);
 
   return {
     formData,
     isFields,
     hasFiles,
     submitting,
-    fileName,
     errors,
     categories,
     brands,
@@ -300,5 +325,6 @@ export const useFormProduct = () => {
     productDetail,
     loadingProductDetail,
     setSuccess,
+    setFormData,
   };
 };

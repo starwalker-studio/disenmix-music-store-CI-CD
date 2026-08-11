@@ -8,6 +8,7 @@ export const FormCategoryBrandFields = ({
   brands,
   categories,
   error,
+  mode,
 }: FormFieldsProps) => {
   return (
     <>
@@ -19,6 +20,7 @@ export const FormCategoryBrandFields = ({
             name="id_category"
             value={formData?.id_category}
             onChange={handleChange}
+            disabled={mode === "edit"}
           >
             <option value={0} disabled>
               Select category
@@ -38,6 +40,7 @@ export const FormCategoryBrandFields = ({
             name="id_brand"
             value={formData?.id_brand}
             onChange={handleChange}
+            disabled={mode === "edit"}
           >
             <option value={0} disabled>
               Select brand

@@ -32,7 +32,7 @@ export interface FormFieldsProps {
   categories?: WavestoreCategory[];
   brands?: Brands[];
   isFields?: boolean;
-  initialData?: ExistingProduct;
+  initialData?: WavestoreProduct;
   mode?: "add" | "edit";
   fileName?: string;
   error?: string;

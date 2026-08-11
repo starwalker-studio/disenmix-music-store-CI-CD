@@ -195,3 +195,16 @@
     border: 1px solid var(--cffy-theme-success-a0);
   }
 }
+
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    border-radius: 8px;
+    height: 300px;
+    display: block;
+    object-fit: contain;
+    opacity: 0.85;
+  }
+}

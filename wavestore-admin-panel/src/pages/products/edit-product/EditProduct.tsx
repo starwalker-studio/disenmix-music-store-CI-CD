@@ -7,7 +7,6 @@ import style from "../Products.module.scss";
 export const EditProduct = () => {
   const location = useLocation();
   const product = location.state;
-  console.log(product);
   return (
     <section className={style.product_section}>
       <div className={style.product_wrapper}>
@@ -17,7 +16,7 @@ export const EditProduct = () => {
               <PageHeader style={style} data={EditProductBreadcrumbs} />
             </div>
             <div>
-              <PForm mode="edit" />
+              <PForm mode="edit" initialData={product}/>
             </div>
           </div>
         </div>

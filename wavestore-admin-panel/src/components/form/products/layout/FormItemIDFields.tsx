@@ -7,6 +7,7 @@ export const FormItemIDFields = ({
   handleChange,
   error,
   itemIdStatus,
+  mode,
 }: FormFieldsProps) => {
   return (
     <>
@@ -26,6 +27,7 @@ export const FormItemIDFields = ({
             name="item_ID"
             value={formData && formData.item_ID.trim()}
             onChange={handleChange}
+            disabled={mode === "edit"}
           />
         </div>
         <div className={style.field}>
