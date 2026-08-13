@@ -7,6 +7,7 @@ import {
   searchProductByFilter,
   searchProductCategories,
   searchProductDetail,
+  searchProductGallery,
 } from "../products/product.functions";
 import type { ProductFilter } from "../products/product.interface";
 import type { ProductStore } from "./store.interface";
@@ -106,6 +107,19 @@ export const useProductStore = create<ProductStore>((set) => ({
     } catch (error) {
       console.error("Error fetching product detail:", error);
       set({ loadingProductDetail: false });
+    }
+  },
+  fetchProductGallery: async (item_ID: string) => {
+    set({ loadingCategories: true });
+    try {
+      const data = await searchProductGallery(item_ID);
+      set({
+        productGallery: data,
+        loadingCategories: false,
+      });
+    } catch (error) {
+      console.error("Error fetching product gallery:", error);
+      set({ loadingCategories: false });
     }
   },
 }));

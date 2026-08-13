@@ -28,6 +28,7 @@ export const PForm = ({ mode, initialData }: ProductFormProps) => {
     productDetail,
     loadingProductDetail,
     setSuccess,
+    productGallery
   } = useFormProduct(mode, initialData);
 
   return (
@@ -75,10 +76,12 @@ export const PForm = ({ mode, initialData }: ProductFormProps) => {
               required
             />
           </div>
-          <span>
-            To select an image you have to create an item ID, select category
-            and brand
-          </span>
+          {mode === "add" && (
+            <span>
+              To select an image you have to create an item ID, select category
+              and brand
+            </span>
+          )}
           <FormInputFileFileds
             style={style}
             isFields={isFields}
@@ -87,6 +90,7 @@ export const PForm = ({ mode, initialData }: ProductFormProps) => {
             handleFileChange={handleFileChange}
             handleChangeFiveFiles={handleChangeFiveFiles}
             error={errors.files}
+            productGallery={productGallery}
           />
 
           <div className={style.form_row_stock_price}>

@@ -20,6 +20,8 @@ export const useFormProduct = (
     fetchProductDetail,
     productDetail,
     loadingProductDetail,
+    fetchProductGallery,
+    productGallery,
   } = useProductStore();
 
   const [submitting, setSubmitting] = useState(false);
@@ -57,16 +59,14 @@ export const useFormProduct = (
         }
       : {
           item_ID: initialData.item_ID,
-          id_brand: initialData.brand?.id ? initialData.brand?.id : 0,
-          id_category: initialData.category?.id ? initialData.category?.id : 0,
+          id_brand: initialData.brand?.id ?? 0,
+          id_category: initialData.category?.id ?? 0,
           model: initialData.model,
           in_stock: initialData.in_stock,
           description: initialData.description,
-          product_info: initialData.product_info
-            ? initialData.product_info
-            : "",
+          product_info: initialData.product_info ?? "",
           price: initialData.price,
-          img: initialData.img ? initialData.img : "",
+          img: "",
           gallery: [],
           imgData: null,
           galleryData: [],
@@ -246,7 +246,7 @@ export const useFormProduct = (
       formData.galleryData.forEach((file) => {
         galleryPayload.append("galleryData[]", file);
       });
-      formData.gallery.forEach((path) => {
+      formData.gallery.forEach((path: string) => {
         galleryPayload.append("gallery[]", path);
       });
 
@@ -308,6 +308,10 @@ export const useFormProduct = (
     }
   }, [formData.item_ID, mode]);
 
+  useEffect(() => {
+    fetchProductGallery(initialData?.item_ID ? initialData?.item_ID : "");
+  }, [initialData?.item_ID]);
+
   return {
     formData,
     isFields,
@@ -326,5 +330,6 @@ export const useFormProduct = (
     loadingProductDetail,
     setSuccess,
     setFormData,
+    productGallery,
   };
 };

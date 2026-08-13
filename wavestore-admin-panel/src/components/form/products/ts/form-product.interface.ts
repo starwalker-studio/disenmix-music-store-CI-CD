@@ -2,6 +2,7 @@ import type {
   Brands,
   WavestoreCategory,
   WavestoreProduct,
+  WavestoreProductImage,
 } from "../../../../api/products/product.interface";
 
 export interface ProductFormData {
@@ -37,6 +38,7 @@ export interface FormFieldsProps {
   fileName?: string;
   error?: string;
   itemIdStatus?: string;
+  productGallery?: WavestoreProductImage[];
   handleFileChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleChangeFiveFiles?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

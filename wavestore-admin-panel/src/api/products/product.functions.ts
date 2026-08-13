@@ -8,6 +8,7 @@ import type {
   WavestoreCategory,
   //   WavestoreCategory,
   WavestoreProduct,
+  WavestoreProductImage,
 } from "./product.interface";
 
 export async function searchProductByFilter(
@@ -84,17 +85,15 @@ export async function searchProductDetail(item_ID: string) {
   return data;
 }
 
-// export async function searchProductGallery(item_ID: string) {
-//   const response = await fetch(
-//     // `${SERVER_ENV.SERVER_HOST_DOCKER}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_GALLERY}${item_ID}`,
-//     `${SERVER_ENV.SERVER_HOST_DEV}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_GALLERY}${item_ID}`,
-//     // `${SERVER_ENV.SERVER_HOST_PROD}${SERVER_ENV.PRODUCT}${SERVER_ENV.END_POINTS.PRODUCT_GALLERY}${item_ID}`,
-//   );
+export async function searchProductGallery(item_ID: string) {
+  const response = await fetch(
+    `${ENV.API_BASE_URL}${ENV.PRODUCT}${END_POINTS.PRODUCT_GALLERY}${item_ID}`,
+  );
 
-//   const data: WavestoreProductImage[] = await response.json();
+  const data: WavestoreProductImage[] = await response.json();
 
-//   return data;
-// }
+  return data;
+}
 
 export async function createProduct(payload: FormData) {
   const response = await fetch(
