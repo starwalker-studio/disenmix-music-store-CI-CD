@@ -68,9 +68,16 @@ class WavestoreProductImagesController extends Controller
         ]);
 
         if ($request->hasFile('galleryData')) {
+            $diskPath = public_path($validated['galleryPath']);
+            if (File::isDirectory($diskPath)) {
+                $existingFiles = File::files($diskPath);
+                foreach ($existingFiles as $existingFile) {
+                    File::delete($existingFile);
+                }
+            }
+
             $files = $request->file('galleryData');
             $paths = $validated['gallery'];
-            $diskPath = public_path($validated['galleryPath']);
 
             foreach ($files as $index => $file) {
                 $fileName = basename($paths[$index]);

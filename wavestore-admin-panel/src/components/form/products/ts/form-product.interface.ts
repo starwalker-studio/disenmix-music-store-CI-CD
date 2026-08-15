@@ -48,12 +48,13 @@ export interface ExistingProduct {
   name: string;
   price: string;
   category: string;
-  img: string; // URL de la imagen ya subida
+  img: string;
 }
 
 export interface ModalProps {
   isOpen: boolean;
   loadingProductDetail?: boolean;
   onClose: () => void;
+  onNavigate: () => void;
   productDetail: WavestoreProduct | null;
 }

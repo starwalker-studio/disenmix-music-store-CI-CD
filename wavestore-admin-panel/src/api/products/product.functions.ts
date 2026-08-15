@@ -123,6 +123,34 @@ export async function createProductGallery(payload: FormData) {
   return response.json();
 }
 
+export async function updateProduct(payload: FormData) {
+  const response = await fetch(
+    `${ENV.API_BASE_URL}${ENV.PRODUCT}${END_POINTS.UPDATE_PRODUCT}`,
+    {
+      method: "POST",
+      body: payload,
+    },
+  );
+  if (!response.ok) {
+    throw new Error(`Error updating product: ${response.status}`);
+  }
+  return response.json();
+}
+
+export async function updateProductGallery(payload: FormData) {
+  const response = await fetch(
+    `${ENV.API_BASE_URL}${ENV.PRODUCT}${END_POINTS.UPDATE_PRODUCT_GALLERY}`,
+    {
+      method: "POST",
+      body: payload,
+    },
+  );
+  if (!response.ok) {
+    throw new Error(`Error updating gallery: ${response.status}`);
+  }
+  return response.json();
+}
+
 export async function checkItemIdAvailability(itemId: string) {
   const response = await fetch(
     `${ENV.API_BASE_URL}${ENV.PRODUCT}${END_POINTS.CHECK_ITEM_ID}${itemId}`,

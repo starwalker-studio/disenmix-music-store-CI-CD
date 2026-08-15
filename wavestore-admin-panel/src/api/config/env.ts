@@ -31,5 +31,7 @@ export const END_POINTS = {
   CHECK_ITEM_ID: "/check-item-id/",
   CREATE_PRODUCT: "/add-product",
   CREATE_PRODUCT_GALLERY: "/add-product-gallery",
+  UPDATE_PRODUCT: "/update-product",
+  UPDATE_PRODUCT_GALLERY: "/update-product-gallery",
   CHECKOUT: "/checkout",
 } as const;

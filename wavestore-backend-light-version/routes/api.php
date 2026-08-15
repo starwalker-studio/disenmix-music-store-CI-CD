@@ -22,6 +22,8 @@ Route::prefix('wavestore-product')->group(function () {
     Route::get('/check-item-id/{item_ID}', [WavestoreProductController::class, 'checkItemId']);
     Route::post('/add-product', [WavestoreProductController::class, 'createProduct']);
     Route::post('/add-product-gallery', [WavestoreProductImagesController::class, 'createGalleryProduct']);
+    Route::post('/update-product', [WavestoreProductController::class, 'updateProduct']);
+    Route::post('/update-product-gallery', [WavestoreProductImagesController::class, 'updateGalleryProduct']);
 });
 
 Route::prefix('store')->group(function () {

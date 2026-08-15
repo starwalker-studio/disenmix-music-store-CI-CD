@@ -8,6 +8,8 @@ import {
   searchProductCategories,
   searchProductDetail,
   searchProductGallery,
+  updateProduct,
+  updateProductGallery,
 } from "../products/product.functions";
 import type { ProductFilter } from "../products/product.interface";
 import type { ProductStore } from "./store.interface";
@@ -94,6 +96,22 @@ export const useProductStore = create<ProductStore>((set) => ({
       return data;
     } catch (error) {
       console.error("Error creating product:", error);
+    }
+  },
+  fetchUpdateProduct: async (payload: FormData) => {
+    try {
+      const data = await updateProduct(payload);
+      return data;
+    } catch (error) {
+      console.error("Error updating product:", error);
+    }
+  },
+  fetchUpdateProductGallery: async (payload: FormData) => {
+    try {
+      const data = await updateProductGallery(payload);
+      return data;
+    } catch (error) {
+      console.error("Error updating product:", error);
     }
   },
   fetchProductDetail: async (item_ID: string) => {

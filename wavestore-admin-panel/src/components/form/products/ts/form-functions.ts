@@ -22,6 +22,8 @@ export const useFormProduct = (
     loadingProductDetail,
     fetchProductGallery,
     productGallery,
+    fetchUpdateProduct,
+    fetchUpdateProductGallery,
   } = useProductStore();
 
   const [wantsToReplacePhotos, setWantsToReplacePhotos] = useState(false);
@@ -77,6 +79,23 @@ export const useFormProduct = (
           galleryPath: "",
         },
   );
+
+  const emptyFormData: ProductFormData = {
+    item_ID: "",
+    id_brand: 0,
+    id_category: 0,
+    model: "",
+    in_stock: true,
+    description: "",
+    product_info: "",
+    price: "",
+    img: "",
+    gallery: [],
+    imgData: null,
+    galleryData: [],
+    imgPath: "",
+    galleryPath: "",
+  };
 
   const areRequiredFieldsComplete = (data: ProductFormData): boolean => {
     return (
@@ -204,31 +223,37 @@ export const useFormProduct = (
     });
   };
 
+  const handleInStockChange = (checked: boolean) => {
+    setFormData((prev) => ({ ...prev, in_stock: checked }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!hasItemID) {
-      setErrors({ itemID: "Set item ID to your product!" });
-      return;
+    if (mode === "add") {
+      if (!hasItemID) {
+        setErrors({ itemID: "Set item ID to your product!" });
+        return;
+      }
+      if (!hasSelectedInputs) {
+        setErrors({ selectedInputs: "Must select category and brand!" });
+        return;
+      }
+      if (!hasFiles) {
+        setErrors({ files: "Upload files!" });
+        return;
+      }
+      if (!formData.imgData) {
+        setErrors({ files: "No file content" });
+        return;
+      }
+      if (!hasItemID || itemIdStatus === "taken") {
+        setErrors({ itemID: "Set Item ID valid or available" });
+        return;
+      }
     }
-    if (!hasSelectedInputs) {
-      setErrors({ selectedInputs: "Must select category and brand!" });
-      return;
-    }
-    if (!hasFiles) {
-      setErrors({ files: "Upload files!" });
-      return;
-    }
-    if (!formData.imgData) {
-      setErrors({ files: "No file content" });
-      return;
-    }
-    if (!hasItemID || itemIdStatus === "taken") {
-      setErrors({ itemID: "Set Item ID valid or available" });
-      return;
-    }
+    const productPayload = new FormData();
     setErrors({});
     setSubmitting(true);
-    const productPayload = new FormData();
     productPayload.append("item_ID", formData.item_ID);
     productPayload.append("id_brand", String(formData.id_brand));
     productPayload.append("id_category", String(formData.id_category));
@@ -238,57 +263,89 @@ export const useFormProduct = (
     productPayload.append("product_info", formData.product_info);
     productPayload.append("price", formData.price);
     productPayload.append("img", formData.img);
-    productPayload.append("imgPath", formData.imgPath);
-    productPayload.append("imgData", formData.imgData);
+    if (formData.imgData) {
+      productPayload.append("imgPath", formData.imgPath);
+      productPayload.append("imgData", formData.imgData);
+    }
     try {
-      const productResult = await fetchCreateProduct(productPayload);
+      if (mode === "add") {
+        const productCreateResult = await fetchCreateProduct(productPayload);
 
-      if (!productResult?.isCreated) {
-        setErrors({ files: "Error on create product" });
-        setSubmitting(false);
-        return;
-      }
-      const galleryPayload = new FormData();
-      galleryPayload.append("item_ID", formData.item_ID);
-      galleryPayload.append("galleryPath", formData.galleryPath);
+        if (!productCreateResult?.isCreated) {
+          setErrors({ files: "Error on create product" });
+          setSubmitting(false);
+          return;
+        }
+        const galleryPayload = new FormData();
+        galleryPayload.append("item_ID", formData.item_ID);
+        galleryPayload.append("galleryPath", formData.galleryPath);
 
-      formData.galleryData.forEach((file) => {
-        galleryPayload.append("galleryData[]", file);
-      });
-      formData.gallery.forEach((path: string) => {
-        galleryPayload.append("gallery[]", path);
-      });
-
-      const galleryResult = await fetchCreateProductGallery(galleryPayload);
-      if (!galleryResult?.isCreated) {
-        setErrors({ files: "Product created, gallery failed" });
-        return;
-      }
-      if (productResult?.isCreated && galleryResult?.isCreated) {
-        await fetchProductDetail(formData.item_ID);
-        setSuccess(true);
-        setSubmitting(false);
-        setFormData({
-          item_ID: "",
-          id_brand: 0,
-          id_category: 0,
-          model: "",
-          in_stock: true,
-          description: "",
-          product_info: "",
-          price: "",
-          img: "",
-          gallery: [],
-          imgData: null,
-          galleryData: [],
-          imgPath: "",
-          galleryPath: "",
+        formData.galleryData.forEach((file) => {
+          galleryPayload.append("galleryData[]", file);
         });
-        setItemIdStatus("idle");
+        formData.gallery.forEach((path: string) => {
+          galleryPayload.append("gallery[]", path);
+        });
+
+        const galleryCreateResult =
+          await fetchCreateProductGallery(galleryPayload);
+        if (!galleryCreateResult?.isCreated) {
+          setErrors({ files: "Product created, gallery failed" });
+          return;
+        }
+        if (productCreateResult?.isCreated && galleryCreateResult?.isCreated) {
+          await fetchProductDetail(formData.item_ID);
+          setSuccess(true);
+          setSubmitting(false);
+          setImgPreview(null);
+          setGalleryPreviews([]);
+          setFormData(emptyFormData);
+          setItemIdStatus("idle");
+        }
+        return;
+      }
+      if (mode === "edit") {
+        const productUpdateResult = await fetchUpdateProduct(productPayload);
+
+        if (!productUpdateResult.isUpdated) {
+          setErrors({ files: "Error on update product" });
+          setSubmitting(false);
+          return;
+        }
+
+        if (formData.galleryData.length === REQUIRED_GALLERY_IMAGES) {
+          const galleryPayload = new FormData();
+          galleryPayload.append("item_ID", formData.item_ID);
+          galleryPayload.append("galleryPath", formData.galleryPath);
+
+          formData.galleryData.forEach((file) => {
+            galleryPayload.append("galleryData[]", file);
+          });
+          formData.gallery.forEach((path: string) => {
+            galleryPayload.append("gallery[]", path);
+          });
+
+          const galleryUpdateResult =
+            await fetchUpdateProductGallery(galleryPayload);
+          if (!galleryUpdateResult?.isUpdated) {
+            setErrors({ files: "Product updated, gallery failed" });
+            return;
+          }
+        }
+        if (productUpdateResult?.isUpdated) {
+          await fetchProductDetail(formData.item_ID);
+          setSuccess(true);
+          setSubmitting(false);
+          setFormData(emptyFormData);
+          setImgPreview(null);
+          setGalleryPreviews([]);
+          setItemIdStatus("idle");
+        }
+        return;
       }
     } catch (error) {
       console.error(error);
-      setErrors({ files: "Error during the creation of product" });
+      setErrors({ files: "Error during the creation/update of product" });
     } finally {
       setSubmitting(false);
     }
@@ -368,5 +425,6 @@ export const useFormProduct = (
     setWantsToReplacePhotos,
     imgPreview,
     galleryPreviews,
+    handleInStockChange
   };
 };

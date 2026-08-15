@@ -1,7 +1,8 @@
 export interface WavestoreResponse {
   message: string;
   data?: WavestoreProduct[];
-  isCreated: boolean;
+  isCreated?: boolean;
+  isUpdated?: boolean;
 }
 
 export interface WavestoreBrand {

@@ -9,6 +9,7 @@ export const ShowSuccessModal = ({
   onClose,
   productDetail,
   loadingProductDetail,
+  onNavigate
 }: ModalProps) => {
   if (!isOpen) return null;
   return (
@@ -61,7 +62,7 @@ export const ShowSuccessModal = ({
               <button className={style.button_secondary} onClick={onClose}>
                 Close
               </button>
-              <button className={style.button_primary} onClick={onClose}>
+              <button className={style.button_primary} onClick={onNavigate}>
                 Add another product
               </button>
             </div>

@@ -34,6 +34,8 @@ export interface ProductStore {
   fetchProductCategories: () => Promise<void>;
   fetchCreateProduct: (payload: FormData) => Promise<WavestoreResponse>;
   fetchCreateProductGallery: (payload: FormData) => Promise<WavestoreResponse>;
+  fetchUpdateProduct: (payload: FormData) => Promise<WavestoreResponse>;
+  fetchUpdateProductGallery: (payload: FormData) => Promise<WavestoreResponse>;
   fetchProductDetail: (item_ID: string) => Promise<void>;
   fetchProductGallery: (item_ID: string) => Promise<void>;
 }

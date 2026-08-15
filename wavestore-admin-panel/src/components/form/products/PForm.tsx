@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { ENV } from "../../../api/config/env";
 import type { WavestoreProduct } from "../../../api/products/product.interface";
 import { ToggleSwitch } from "../../ui/toggle-switch/ToggleSwitch";
@@ -14,6 +15,7 @@ interface ProductFormProps {
 }
 
 export const PForm = ({ mode, initialData }: ProductFormProps) => {
+  const navigate = useNavigate();
   const {
     formData,
     isFields,
@@ -29,12 +31,12 @@ export const PForm = ({ mode, initialData }: ProductFormProps) => {
     success,
     productDetail,
     loadingProductDetail,
-    setSuccess,
     productGallery,
     setWantsToReplacePhotos,
     wantsToReplacePhotos,
     imgPreview,
     galleryPreviews,
+    handleInStockChange,
   } = useFormProduct(mode, initialData);
 
   const displayImg = imgPreview
@@ -56,7 +58,8 @@ export const PForm = ({ mode, initialData }: ProductFormProps) => {
         isOpen={success}
         loadingProductDetail={loadingProductDetail}
         productDetail={productDetail}
-        onClose={() => setSuccess(false)}
+        onClose={() => navigate("/products")}
+        onNavigate={() => navigate("/products/add")}
       />
       <div className={style.form_card}>
         <div className={style.form_header}>
@@ -144,7 +147,18 @@ export const PForm = ({ mode, initialData }: ProductFormProps) => {
               )}
             </div>
           )}
-
+          {mode === "edit" && (
+            <div className={style.checkbox_field}>
+              <input
+                type="checkbox"
+                id="in_stock"
+                name="in_stock"
+                checked={formData.in_stock}
+                onChange={(e) => handleInStockChange(e.target.checked)}
+              />
+              <label htmlFor="in_stock">Available in stock</label>
+            </div>
+          )}
           <div className={style.form_row_stock_price}>
             <div className={style.field}>
               <label htmlFor="price">Price</label>

@@ -73,15 +73,15 @@ class WavestoreProductController extends Controller
     {
         $validated = $request->validate([
             'item_ID'       => 'required|string|exists:wavestore_products,item_ID',
-            'id_brand'      => 'required|integer|exists:wavestore_brands,id',
-            'id_category'   => 'required|integer|exists:wavestore_categories,id',
-            'model'         => 'required|string|max:255',
-            'in_stock'      => 'required|boolean',
-            'description'   => 'required|string',
-            'product_info'  => 'required|string',
-            'price'         => 'required|numeric',
-            'img'           => 'required|string',
-            'imgPath'       => 'required|string',
+            'id_brand'      => 'required|integer|exists:wavestore_brand,id',
+            'id_category'   => 'required|integer|exists:wavestore_category,id',
+            'model'         => 'nullable|string|max:255',
+            'in_stock'      => 'nullable|boolean',
+            'description'   => 'nullable|string',
+            'product_info'  => 'nullable|string',
+            'price'         => 'nullable|numeric',
+            'img'           => 'nullable|string',
+            'imgPath'       => 'nullable|string',
             'imgData'       => 'nullable|image|max:2048',
         ]);
 
