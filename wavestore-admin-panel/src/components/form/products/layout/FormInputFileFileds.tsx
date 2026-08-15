@@ -1,16 +1,13 @@
 import clsx from "clsx";
-import { ENV } from "../../../../api/config/env";
 import type { FormFieldsProps } from "../ts/form-product.interface";
 
 export const FormInputFileFileds = ({
   style,
   isFields,
-  initialData,
   mode,
   handleFileChange,
   handleChangeFiveFiles,
   error,
-  productGallery,
 }: FormFieldsProps) => {
   return (
     <>
@@ -42,7 +39,7 @@ export const FormInputFileFileds = ({
               name="image"
               accept="image/*"
               onChange={handleFileChange}
-              disabled={!isFields}
+              disabled={mode === "add" && !isFields}
             />
           </div>
         </div>
@@ -75,39 +72,12 @@ export const FormInputFileFileds = ({
               accept="image/*"
               multiple
               onChange={handleChangeFiveFiles}
-              disabled={!isFields}
+              disabled={mode === "add" && !isFields}
             />
           </div>
         </div>
       </div>
-      <div className={style.preview}>
-        <div className={style.data_title}>
-          {mode === "edit" && initialData?.img && (
-            <div className={style.product_image}>
-              <img
-                src={`${ENV.PUBLIC_BASE_URL}${initialData.img}`}
-                alt="Imagen actual"
-              />
-            </div>
-          )}
-          <span>Display</span>
-        </div>
-        <div className={style.data_title}>
-        {mode === "edit" && productGallery && productGallery.length > 0 && (
-          <div className={style.gallery}>
-            {productGallery.map((image) => (
-              <div key={image.id}>
-                <img
-                  src={`${ENV.PUBLIC_BASE_URL}${image.url}`}
-                  alt={`Gallery image ${image.sort_order}`}
-                />
-              </div>
-            ))}
-          </div>
-        )}
-        <span>Gallery</span>
-        </div>
-      </div>
+      
       {error && <span className={style.error}>{error}</span>}
     </>
   );

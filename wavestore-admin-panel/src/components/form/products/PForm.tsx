@@ -1,4 +1,6 @@
+import { ENV } from "../../../api/config/env";
 import type { WavestoreProduct } from "../../../api/products/product.interface";
+import { ToggleSwitch } from "../../ui/toggle-switch/ToggleSwitch";
 import { FormCategoryBrandFields } from "./layout/FormCategoryBrandFields";
 import { FormInputFileFileds } from "./layout/FormInputFileFileds";
 import { FormItemIDFields } from "./layout/FormItemIDFields";
@@ -28,8 +30,25 @@ export const PForm = ({ mode, initialData }: ProductFormProps) => {
     productDetail,
     loadingProductDetail,
     setSuccess,
-    productGallery
+    productGallery,
+    setWantsToReplacePhotos,
+    wantsToReplacePhotos,
+    imgPreview,
+    galleryPreviews,
   } = useFormProduct(mode, initialData);
+
+  const displayImg = imgPreview
+    ? imgPreview
+    : mode === "edit" && initialData?.img
+      ? `${ENV.PUBLIC_BASE_URL}${initialData.img}`
+      : null;
+
+  const displayGallery =
+    galleryPreviews.length > 0
+      ? galleryPreviews
+      : mode === "edit" && productGallery
+        ? productGallery.map((img) => `${ENV.PUBLIC_BASE_URL}${img.url}`)
+        : [];
 
   return (
     <>
@@ -82,16 +101,49 @@ export const PForm = ({ mode, initialData }: ProductFormProps) => {
               and brand
             </span>
           )}
-          <FormInputFileFileds
-            style={style}
-            isFields={isFields}
-            initialData={initialData}
-            mode={mode}
-            handleFileChange={handleFileChange}
-            handleChangeFiveFiles={handleChangeFiveFiles}
-            error={errors.files}
-            productGallery={productGallery}
-          />
+
+          {mode === "edit" && (
+            <ToggleSwitch
+              checked={wantsToReplacePhotos}
+              onChange={setWantsToReplacePhotos}
+              label="Replace product photos"
+            />
+          )}
+
+          {(wantsToReplacePhotos || mode === "add") && (
+            <>
+              <FormInputFileFileds
+                style={style}
+                isFields={isFields}
+                mode={mode}
+                handleFileChange={handleFileChange}
+                handleChangeFiveFiles={handleChangeFiveFiles}
+                error={errors.files}
+              />
+            </>
+          )}
+          {displayImg && (
+            <div className={style.preview}>
+              <div className={style.data_title}>
+                <div className={style.product_image}>
+                  <img src={displayImg} alt="Product preview" />
+                </div>
+                <span>Display</span>
+              </div>
+              {displayGallery.length > 0 && (
+                <div className={style.data_title}>
+                  <div className={style.gallery}>
+                    {displayGallery.map((url, index) => (
+                      <div key={index}>
+                        <img src={url} alt={`Gallery ${index + 1}`} />
+                      </div>
+                    ))}
+                  </div>
+                  <span>Gallery</span>
+                </div>
+              )}
+            </div>
+          )}
 
           <div className={style.form_row_stock_price}>
             <div className={style.field}>

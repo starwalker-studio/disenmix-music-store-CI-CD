@@ -69,6 +69,40 @@ class WavestoreProductController extends Controller
         ], 500);
     }
 
+    public function updateProduct(Request $request)
+    {
+        $validated = $request->validate([
+            'item_ID'       => 'required|string|exists:wavestore_products,item_ID',
+            'id_brand'      => 'required|integer|exists:wavestore_brands,id',
+            'id_category'   => 'required|integer|exists:wavestore_categories,id',
+            'model'         => 'required|string|max:255',
+            'in_stock'      => 'required|boolean',
+            'description'   => 'required|string',
+            'product_info'  => 'required|string',
+            'price'         => 'required|numeric',
+            'img'           => 'required|string',
+            'imgPath'       => 'required|string',
+            'imgData'       => 'nullable|image|max:2048',
+        ]);
+
+        $product = WavestoreProduct::where('item_ID', $validated['item_ID'])->firstOrFail();
+
+        if ($request->hasFile('imgData')) {
+            $diskPath = public_path($validated['imgPath']);
+            $fileName = basename($validated['img']);
+            $request->file('imgData')->move($diskPath, $fileName);
+        }
+
+        $updateData = collect($validated)->except(['imgPath', 'imgData', 'img'])->toArray();
+        $product->update($updateData);
+
+        return response()->json([
+            'message'   => "Product {$product->item_ID} updated successfully!",
+            'isUpdated' => true,
+            'data'      => $product,
+        ], 200);
+    }
+
     public function showItemID(WavestoreProduct $wavestoreProduct)
     {
         return response()->json(

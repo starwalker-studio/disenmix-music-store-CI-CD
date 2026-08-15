@@ -24,6 +24,9 @@ export const useFormProduct = (
     productGallery,
   } = useProductStore();
 
+  const [wantsToReplacePhotos, setWantsToReplacePhotos] = useState(false);
+  const [imgPreview, setImgPreview] = useState<string | null>(null);
+  const [galleryPreviews, setGalleryPreviews] = useState<string[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [isFields, setIsFields] = useState<boolean>(false);
@@ -142,6 +145,9 @@ export const useFormProduct = (
     const categorySlug = selectedCategory?.slug ?? "";
     const brandSlug = selectedBrand?.brand.toLocaleLowerCase() ?? "";
 
+    const previewUrl = URL.createObjectURL(renamedFile);
+    setImgPreview(previewUrl);
+
     setFormData((prev) => {
       const updated = {
         ...prev,
@@ -182,6 +188,9 @@ export const useFormProduct = (
         `/img/items/${categorySlug}/${brandSlug}/${formData.item_ID}/${name}`,
       );
     });
+
+    const previews = renamedFiles.map((file) => URL.createObjectURL(file));
+    setGalleryPreviews(previews);
 
     setFormData((prev) => {
       const updated = {
@@ -309,8 +318,32 @@ export const useFormProduct = (
   }, [formData.item_ID, mode]);
 
   useEffect(() => {
-    fetchProductGallery(initialData?.item_ID ? initialData?.item_ID : "");
+    if (mode === "edit") {
+      fetchProductGallery(initialData?.item_ID ? initialData?.item_ID : "");
+    }
   }, [initialData?.item_ID]);
+
+  useEffect(() => {
+    return () => {
+      if (imgPreview) URL.revokeObjectURL(imgPreview);
+    };
+  }, [imgPreview]);
+
+  useEffect(() => {
+    return () => {
+      galleryPreviews.forEach((url) => URL.revokeObjectURL(url));
+    };
+  }, [galleryPreviews]);
+
+  useEffect(() => {
+    if (mode !== "edit" || !initialData) return;
+
+    queueMicrotask(() => {
+      setHasItemID(areItemFieldComplete(formData));
+      setHasSelectedInputs(areSelectedInputsFields(formData));
+      setIsFields(areRequiredFieldsComplete(formData));
+    });
+  }, [mode, initialData]);
 
   return {
     formData,
@@ -331,5 +364,9 @@ export const useFormProduct = (
     setSuccess,
     setFormData,
     productGallery,
+    wantsToReplacePhotos,
+    setWantsToReplacePhotos,
+    imgPreview,
+    galleryPreviews,
   };
 };

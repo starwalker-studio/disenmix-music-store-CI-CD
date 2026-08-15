@@ -55,4 +55,32 @@ class WavestoreProductImagesController extends Controller
             'isCreated' => $galleryCreated,
         ], $galleryCreated ? 201 : 500);
     }
+
+    public function updateGalleryProduct(Request $request)
+    {
+        $validated = $request->validate([
+            'item_ID'        => 'required|string|exists:wavestore_products,item_ID',
+            'gallery'        => 'nullable|array|size:5',
+            'gallery.*'      => 'string',
+            'galleryData'    => 'nullable|array|size:5',
+            'galleryData.*'  => 'image|max:2048',
+            'galleryPath'    => 'nullable|string',
+        ]);
+
+        if ($request->hasFile('galleryData')) {
+            $files = $request->file('galleryData');
+            $paths = $validated['gallery'];
+            $diskPath = public_path($validated['galleryPath']);
+
+            foreach ($files as $index => $file) {
+                $fileName = basename($paths[$index]);
+                $file->move($diskPath, $fileName);
+            }
+        }
+
+        return response()->json([
+            'message'   => 'Gallery updated successfully!',
+            'isUpdated' => true,
+        ], 200);
+    }
 }
