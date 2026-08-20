@@ -31,10 +31,10 @@ export const useProductStore = create<ProductStore>((set) => ({
   categories: [],
   productDetail: null,
   productGallery: [],
-  fetchProducts: async (filters: ProductFilter | undefined) => {
+  fetchProducts: async (filters: ProductFilter | undefined, itemID?: string) => {
     set({ loadingProducts: true });
     try {
-      const data = await searchProductByFilter(filters);
+      const data = await searchProductByFilter(filters, itemID);
       set({
         products: data.data,
         total: data.total,

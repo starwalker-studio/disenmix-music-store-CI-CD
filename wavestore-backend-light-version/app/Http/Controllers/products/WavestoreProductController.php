@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\File;
 
 class WavestoreProductController extends Controller
 {
-    public function productIndex(Request $request)
+    public function productIndex(Request $request, ?string $searchTerm = null)
     {
-        $perPage = (int) $request->input('perPage', 12);
+        $perPage = (int) $request->input('perPage', 8);
 
         $query = WavestoreProduct::with('brand', 'category')->orderBy('id_brand', 'asc');
 
@@ -25,7 +25,7 @@ class WavestoreProductController extends Controller
             'max_price',
         ]);
 
-        ProductService::filterQuery($query, $filters);
+        ProductService::filterQuery($query, $filters, $searchTerm);
 
         $paginator = $query->paginate($perPage);
 

@@ -13,6 +13,7 @@ import type {
 
 export async function searchProductByFilter(
   filters: ProductFilter | undefined,
+  itemID?: string,
 ) {
   const queryParams = new URLSearchParams();
 
@@ -24,20 +25,13 @@ export async function searchProductByFilter(
   if (filters?.in_stock !== undefined)
     queryParams.append("in_stock", String(filters.in_stock));
 
-  if (filters?.min_price !== undefined)
-    queryParams.append("min_price", String(filters.min_price));
+  if (filters?.id_brand !== undefined)
+    queryParams.append("id_brand", String(filters.id_brand));
 
-  if (filters?.max_price !== undefined)
-    queryParams.append("max_price", String(filters.max_price));
-
-  if (filters?.id_brand?.length) {
-    filters.id_brand.forEach((id) => {
-      queryParams.append("id_brand[]", id.toString());
-    });
-  }
+  const searchPath = itemID ? `/${itemID}` : "";
 
   const response = await fetch(
-    `${ENV.API_BASE_URL}${ENV.PRODUCT}/?${queryParams?.toString()}`,
+    `${ENV.API_BASE_URL}${ENV.PRODUCT}${searchPath}?${queryParams?.toString()}`,
   );
 
   const data: PaginatedResponse<WavestoreProduct> = await response.json();

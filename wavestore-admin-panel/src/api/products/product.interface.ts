@@ -43,12 +43,13 @@ export interface WavestoreProduct {
 }
 
 export type ProductFilter = {
+  item_ID?: string;
   page?: number;
   in_stock?: number;
   min_price?: number;
   max_price?: number;
   id_category?: number;
-  id_brand?: number[];
+  id_brand?: number;
 };
 
 export interface PaginatedResponse<T> {

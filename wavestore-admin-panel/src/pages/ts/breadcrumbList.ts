@@ -37,6 +37,17 @@ export const EditProductBreadcrumbs: IBreadcrumbList = {
   },
 };
 
+export const ViewProductBreadcrumbs: IBreadcrumbList = {
+  breadcrumbs: {
+    page_header: "View Product",
+    nav_list: [
+      { id: 1, label: "Home", url: "/" },
+      { id: 2, label: "Wavestore Products", url: "/products" },
+      { id: 3, label: "View", url: "/products/view-product" },
+    ],
+  },
+};
+
 export const ClientBreadcrumbs: IBreadcrumbList = {
   breadcrumbs: {
     page_header: "Clients",

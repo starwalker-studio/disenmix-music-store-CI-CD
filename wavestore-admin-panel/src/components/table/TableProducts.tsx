@@ -14,9 +14,10 @@ import {
 type TableProps = {
   data: WavestoreProduct[];
   onEdit: (item: WavestoreProduct) => void;
+  onView: (item: WavestoreProduct) => void;
 };
 
-export const TableProducts = ({ data, onEdit }: TableProps) => {
+export const TableProducts = ({ data, onEdit, onView }: TableProps) => {
   return (
     <div className={style.table_card}>
       <div className={style.table_wrapper}>
@@ -63,7 +64,7 @@ export const TableProducts = ({ data, onEdit }: TableProps) => {
                 <td>
                   <div className={style.actions_cell}>
                     <button
-                      // onClick={() => onView(item)}
+                      onClick={() => onView(item)}
                       className={clsx(style.action_button, style.action_view)}
                       title="View"
                     >

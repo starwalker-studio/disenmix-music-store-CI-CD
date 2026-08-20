@@ -6,7 +6,7 @@ use App\Models\product\WavestoreBrand;
 
 class ProductService
 {
-    public static function filterQuery($query, $filters)
+    public static function filterQuery($query, $filters, $searchTerm = null)
     {
         if (isset($filters['id_category'])) {
             $query->where('id_category', $filters['id_category']);
@@ -17,7 +17,11 @@ class ProductService
         }
 
         if (!empty($filters['id_brand'])) {
-            $query->whereIn('id_brand', $filters['id_brand']);
+            if (is_array($filters['id_brand'])) {
+                $query->whereIn('id_brand', $filters['id_brand']);
+            } else {
+                $query->where('id_brand', $filters['id_brand']);
+            }
         }
 
         if (!empty($filters['min_price'])) {
@@ -26,6 +30,10 @@ class ProductService
 
         if (!empty($filters['max_price'])) {
             $query->where('price', '<=', $filters['max_price']);
+        }
+
+        if (!empty($searchTerm)) {
+            $query->where('item_ID', 'LIKE', "%{$searchTerm}%")->get();
         }
     }
 

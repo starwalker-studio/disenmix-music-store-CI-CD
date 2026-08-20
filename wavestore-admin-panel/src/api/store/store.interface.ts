@@ -27,7 +27,10 @@ export interface ProductStore {
   productGallery: WavestoreProductImage[];
   //   clearGallery: () => void;
   //   clearDetail: () => void;
-  fetchProducts: (filters?: ProductFilter | undefined) => Promise<void>;
+  fetchProducts: (
+    filters?: ProductFilter | undefined,
+    itemID?: string,
+  ) => Promise<void>;
   fetchProductBrands: (id_category: number) => Promise<void>;
   //   fetchProductPriceRange: () => Promise<void>;
   fetchCheckItemID: (itemID: string) => Promise<boolean>;

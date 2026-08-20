@@ -1,4 +1,5 @@
 @use "/src/scss/global" as *;
+@forward "/src/scss/base";
 
 .product_section {
   @include section;
@@ -17,4 +18,66 @@
   .header {
     @include page_header;
   }
+}
+
+.filter_search {
+  margin-bottom: 2ex;
+}
+
+.filter_search_header {
+  display: flex;
+  padding: 1ex 0 2.8ex;
+  align-items: center;
+  justify-content: center;
+  gap: 2ex;
+  h3 {
+    font-size: 1.6rem;
+  }
+  button {
+    align-self: flex-end;
+    background-color: var(--cffy-theme-info-a0);
+    border: 1px solid var(--cffy-theme-info-a10);
+    color: var(--cffy-theme-surface-tonal-a0);
+    border-radius: 8px;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.4s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.inputs_grid {
+  background-color: var(--cffy-theme-surface-a10);
+  @include border-radius-20;
+  padding: 2.2rem;
+  display: grid;
+  grid-template-columns: 0.5fr 0.8fr 0.2fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.category_brand_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.in_stock_row {
+  display: flex;
+  align-items: center;
+  justify-items: end;
+}
+
+.field {
+  @include inputs;
+}
+
+.checkbox_field {
+  @include checkbox;
 }

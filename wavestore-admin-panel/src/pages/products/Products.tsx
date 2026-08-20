@@ -1,29 +1,30 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import type { WavestoreProduct } from "../../api/products/product.interface";
-import { useProductStore } from "../../api/store/product.store";
+import { FilterSearch } from "../../components/filter-search/FilterSearch";
 import { TableProducts } from "../../components/table/TableProducts";
 import { PageHeader } from "../../components/ui/PageHeader";
 import { Pagination } from "../../components/ui/paginator/Pagination";
+import { Spinner } from "../../components/ui/spinner/Spinner";
 import { ProductBreadcrumbs } from "../ts/breadcrumbList";
+import { useProductSearch } from "../ts/product-search";
 import style from "./Products.module.scss";
 
 export const Products = () => {
-  const navigate = useNavigate();
-  const { fetchProducts, products, currentPage, lastPage } = useProductStore();
-  const onEdit = (product: WavestoreProduct) => {
-    navigate("/products/edit", { state: product });
-  };
-  useEffect(() => {
-    fetchProducts({
-      page: 1,
-    });
-  }, []);
-  const handlePageChange = (page?: number) => {
-    fetchProducts({
-      page,
-    });
-  };
+  const {
+    categories,
+    handleChange,
+    handlePageChange,
+    currentPage,
+    lastPage,
+    onEdit,
+    onView,
+    handleInStockChange,
+    productSearch,
+    products,
+    brands,
+    loadingProducts,
+    isSearchActive,
+    EMPTY_PRODUCT_SEARCH,
+    setProductSearch,
+  } = useProductSearch();
   return (
     <section className={style.product_section}>
       <div className={style.product_wrapper}>
@@ -33,7 +34,26 @@ export const Products = () => {
               <PageHeader style={style} data={ProductBreadcrumbs} />
             </div>
             <div>
-              <TableProducts data={products} onEdit={onEdit} />
+              <FilterSearch
+                brands={brands}
+                categories={categories}
+                handleChange={handleChange}
+                handleInStockChange={handleInStockChange}
+                productSearch={productSearch}
+                style={style}
+                EMPTY_PRODUCT_SEARCH={EMPTY_PRODUCT_SEARCH}
+                isSearchActive={isSearchActive}
+                setProductSearch={setProductSearch}
+              />
+              {loadingProducts ? (
+                <Spinner />
+              ) : (
+                <TableProducts
+                  data={products}
+                  onEdit={onEdit}
+                  onView={onView}
+                />
+              )}
               <Pagination
                 currentPage={currentPage}
                 totalPages={lastPage}

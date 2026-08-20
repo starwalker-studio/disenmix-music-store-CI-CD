@@ -22,6 +22,13 @@ export interface ProductFormData {
   galleryPath: string;
 }
 
+export interface ProductSearch {
+  item_ID: string;
+  id_brand: number;
+  id_category: number;
+  in_stock: boolean;
+}
+
 export interface FormFieldsProps {
   formData?: ProductFormData;
   style: CSSModuleClasses;
