@@ -1,3 +1,5 @@
+import { faArrowLeft, faCancel } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { ENV } from "../../../api/config/env";
 import type { WavestoreProduct } from "../../../api/products/product.interface";
@@ -159,29 +161,51 @@ export const PForm = ({ mode, initialData }: ProductFormProps) => {
               <label htmlFor="in_stock">Available in stock</label>
             </div>
           )}
-          <div className={style.form_row_stock_price}>
-            <div className={style.field}>
-              <label htmlFor="price">Price</label>
-              <input
-                type="text"
-                id="price"
-                name="price"
-                value={formData.price}
-                onChange={handleChange}
-                required
-              />
+          <div className={style.buttons_footer_row}>
+            <div className={style.form_row_stock_price}>
+              <div className={style.field}>
+                <label htmlFor="price">Price</label>
+                <input
+                  type="text"
+                  id="price"
+                  name="price"
+                  value={formData.price}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className={style.submit_button}
+                disabled={submitting}
+              >
+                {submitting
+                  ? "Guardando..."
+                  : mode === "edit"
+                    ? "Update product"
+                    : "Save product"}
+              </button>
             </div>
-            <button
-              type="submit"
-              className={style.submit_button}
-              disabled={submitting}
-            >
-              {submitting
-                ? "Guardando..."
-                : mode === "edit"
-                  ? "Update product"
-                  : "Save product"}
-            </button>
+            <div className={style.action_buttons}>
+              <button
+                onClick={() => navigate("/products")}
+                className={style.button_secondary}
+              >
+                <FontAwesomeIcon icon={faArrowLeft} />
+                Back to products
+              </button>
+              {mode === "edit" && (
+                <button
+                  onClick={() =>
+                    navigate("/products/view-product", { state: initialData })
+                  }
+                  className={style.button_cancel}
+                >
+                  <FontAwesomeIcon icon={faCancel} />
+                  Cancel
+                </button>
+              )}
+            </div>
           </div>
         </form>
       </div>

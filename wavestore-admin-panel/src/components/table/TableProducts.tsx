@@ -15,9 +15,10 @@ type TableProps = {
   data: WavestoreProduct[];
   onEdit: (item: WavestoreProduct) => void;
   onView: (item: WavestoreProduct) => void;
+  onDeactivate: (item: WavestoreProduct) => void;
 };
 
-export const TableProducts = ({ data, onEdit, onView }: TableProps) => {
+export const TableProducts = ({ data, onEdit, onView, onDeactivate }: TableProps) => {
   return (
     <div className={style.table_card}>
       <div className={style.table_wrapper}>
@@ -80,7 +81,7 @@ export const TableProducts = ({ data, onEdit, onView }: TableProps) => {
                     </button>
 
                     <button
-                      // onClick={() => onDeactivate(item)}
+                      onClick={() => onDeactivate(item)}
                       className={clsx(
                         style.action_button,
                         style.action_deactivate,

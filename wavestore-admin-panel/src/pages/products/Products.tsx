@@ -5,6 +5,7 @@ import { Pagination } from "../../components/ui/paginator/Pagination";
 import { Spinner } from "../../components/ui/spinner/Spinner";
 import { ProductBreadcrumbs } from "../ts/breadcrumbList";
 import { useProductSearch } from "../ts/product-search";
+import { DeleteProduct } from "./delete-product/DeleteProduct";
 import style from "./Products.module.scss";
 
 export const Products = () => {
@@ -24,8 +25,14 @@ export const Products = () => {
     isSearchActive,
     EMPTY_PRODUCT_SEARCH,
     setProductSearch,
+    onDeactivate,
+    isModal,
+    onCloseModal,
+    productToDelete
   } = useProductSearch();
   return (
+    <>
+    <DeleteProduct isOpen={isModal} onClose={onCloseModal} productDetail={productToDelete}/>
     <section className={style.product_section}>
       <div className={style.product_wrapper}>
         <div className={style.product_container}>
@@ -52,6 +59,7 @@ export const Products = () => {
                   data={products}
                   onEdit={onEdit}
                   onView={onView}
+                  onDeactivate={onDeactivate}
                 />
               )}
               <Pagination
@@ -64,5 +72,6 @@ export const Products = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };

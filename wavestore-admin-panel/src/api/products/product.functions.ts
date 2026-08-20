@@ -155,3 +155,16 @@ export async function checkItemIdAvailability(itemId: string) {
   const data = await response.json();
   return data.available;
 }
+
+export async function deactivateProduct(item_ID: string) {
+  const response = await fetch(
+    `${ENV.API_BASE_URL}${ENV.PRODUCT}/delete/${item_ID}`,
+    { method: "DELETE" },
+  );
+
+  if (!response.ok) {
+    throw new Error(`Error deactivating product: ${response.status}`);
+  }
+
+  return response.json();
+}

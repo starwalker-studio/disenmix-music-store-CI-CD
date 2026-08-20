@@ -38,6 +38,7 @@ export interface WavestoreProduct {
   img: string | null;
   created_at?: string;
   updated_at?: string;
+  deleted_at?: string;
   brand?: WavestoreBrand;
   category?: WavestoreCategory;
 }

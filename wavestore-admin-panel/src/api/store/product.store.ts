@@ -3,6 +3,7 @@ import {
   checkItemIdAvailability,
   createProduct,
   createProductGallery,
+  deactivateProduct,
   searchProductBrandsByCategory,
   searchProductByFilter,
   searchProductCategories,
@@ -138,6 +139,14 @@ export const useProductStore = create<ProductStore>((set) => ({
     } catch (error) {
       console.error("Error fetching product gallery:", error);
       set({ loadingCategories: false });
+    }
+  },
+  fetchDeleteProduct: async (item_ID: string) => {
+    try {
+      const data = await deactivateProduct(item_ID);
+      return data;
+    } catch (error) {
+      console.error("Error deactivating product:", error);
     }
   },
 }));

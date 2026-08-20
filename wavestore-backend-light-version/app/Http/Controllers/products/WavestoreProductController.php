@@ -136,4 +136,16 @@ class WavestoreProductController extends Controller
             'available' => !$exists,
         ]);
     }
+
+    public function deleteProduct(string $item_ID)
+{
+    $product = WavestoreProduct::where('item_ID', $item_ID)->firstOrFail();
+
+    $product->delete();
+
+    return response()->json([
+        'message'   => "Product {$product->item_ID} deactivated successfully!",
+        'isDeleted' => true,
+    ], 200);
+}
 }

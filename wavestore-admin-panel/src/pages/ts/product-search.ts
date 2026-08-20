@@ -18,6 +18,10 @@ export const useProductSearch = () => {
     loadingProducts,
   } = useProductStore();
 
+  const [isModal, setIsModal] = useState<boolean>(false);
+
+  const [productToDelete, setProductToDelete] = useState<WavestoreProduct>();
+
   const [productSearch, setProductSearch] = useState<ProductSearch>({
     item_ID: "",
     id_brand: 0,
@@ -42,6 +46,15 @@ export const useProductSearch = () => {
 
   const onView = (product: WavestoreProduct) => {
     navigate("/products/view-product", { state: product });
+  };
+
+  const onDeactivate = (product: WavestoreProduct) => {
+    setProductToDelete(product);
+    setIsModal(true);
+  };
+
+  const onCloseModal = () => {
+    setIsModal(false);
   };
 
   useEffect(() => {
@@ -119,5 +132,9 @@ export const useProductSearch = () => {
     isSearchActive,
     EMPTY_PRODUCT_SEARCH,
     setProductSearch,
+    onDeactivate,
+    isModal,
+    onCloseModal,
+    productToDelete
   };
 };

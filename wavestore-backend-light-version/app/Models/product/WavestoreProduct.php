@@ -3,9 +3,12 @@
 namespace App\Models\product;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class WavestoreProduct extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'wavestore_products';
 
     protected $fillable = [

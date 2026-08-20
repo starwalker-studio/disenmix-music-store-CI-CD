@@ -1,0 +1,114 @@
+@forward "/src/scss/base";
+@use "/src/scss/global" as *;
+
+p {
+  font-weight: 400;
+  opacity: 0.8;
+}
+span {
+  font-weight: 600;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+
+.modal {
+  background-color: var(--cffy-theme-surface-a10, #1a1d29);
+  @include border-radius-20;
+  padding: 2rem;
+  max-width: 580px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.icon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background-color: rgba(222, 175, 74, 0.12);
+  color: var(--cffy-theme-warning-a0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.modal_container {
+  padding: 0.3rem 0;
+}
+
+.modal_header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1ex;
+  font-size: 1.3rem;
+  padding: 2ex;
+}
+
+.product_to_delete_detail {
+  width: 100%;
+  display: flex;
+  @include border-radius-20;
+  background-color: var(--cffy-theme-surface-a20);
+  padding: 2.4ex 7.6ex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: start;
+  align-items: center;
+  gap: 1ex;
+  padding: .6ex 0 .6ex;
+}
+
+.status {
+  @include status_style;
+}
+
+.status_active {
+  @include active;
+}
+
+.status_inactive {
+  @include inactive;
+}
+
+.footer_actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--cffy-theme-surface-a40);
+}
+
+.button_secondary,
+.button_primary,
+.button_cancel {
+  @include button-style;
+}
+
+.button_secondary {
+  @include button-secondary-background;
+}
+
+.button_primary {
+  @include button-primary-background;
+}
+
+.button_cancel {
+  @include button-cancel-background;
+}

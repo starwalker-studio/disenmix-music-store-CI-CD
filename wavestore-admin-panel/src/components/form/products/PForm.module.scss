@@ -180,3 +180,35 @@
     opacity: 0.85;
   }
 }
+
+.buttons_footer_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.action_buttons {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  gap: 2ex;
+}
+
+.button_secondary,
+.button_primary,
+.button_cancel {
+  @include button-style;
+}
+
+.button_secondary {
+  @include button-secondary-background;
+}
+
+.button_primary {
+  @include button-primary-background;
+}
+
+.button_cancel {
+  @include button-cancel-background;
+}

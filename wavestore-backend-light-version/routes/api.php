@@ -20,7 +20,8 @@ Route::prefix('wavestore-product')->group(function () {
     Route::post('/add-product-gallery', [WavestoreProductImagesController::class, 'createGalleryProduct']);
     Route::post('/update-product', [WavestoreProductController::class, 'updateProduct']);
     Route::post('/update-product-gallery', [WavestoreProductImagesController::class, 'updateGalleryProduct']);
-
+    Route::delete('/delete/{item_ID}', [WavestoreProductController::class, 'deleteProduct'])
+        ->where('item_ID', '[A-Za-z0-9\-]+');
     Route::get('/{searchTerm?}', [WavestoreProductController::class, 'productIndex'])
         ->where('searchTerm', '[A-Za-z0-9\-]*');
 });

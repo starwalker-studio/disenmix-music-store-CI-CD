@@ -62,6 +62,6 @@ export interface ModalProps {
   isOpen: boolean;
   loadingProductDetail?: boolean;
   onClose: () => void;
-  onNavigate: () => void;
-  productDetail: WavestoreProduct | null;
+  onNavigate?: () => void;
+  productDetail?: WavestoreProduct | null;
 }
