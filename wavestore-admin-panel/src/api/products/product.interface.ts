@@ -3,6 +3,7 @@ export interface WavestoreResponse {
   data?: WavestoreProduct[];
   isCreated?: boolean;
   isUpdated?: boolean;
+  isDeleted?: boolean;
 }
 
 export interface WavestoreBrand {

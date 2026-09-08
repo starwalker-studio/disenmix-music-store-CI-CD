@@ -13,6 +13,15 @@ services:
       - app-network
       - proxy-network
 
+  admin-prod:
+    build:
+      context: ./wavestore-admin-panel
+      dockerfile: Dockerfile
+    container_name: wavestore-admin-panel-prod
+    networks:
+      - app-network
+      - proxy-network
+
   frontend-prod:
     build:
       context: ./wavestore-light-version-front
@@ -33,6 +42,7 @@ services:
       - mysql
     networks:
       - app-network
+      - proxy-network
 
   mysql:
     image: mysql:8.0

@@ -227,7 +227,7 @@ export const useFormProduct = (
     setFormData((prev) => ({ ...prev, in_stock: checked }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.ChangeEvent) => {
     e.preventDefault();
     if (mode === "add") {
       if (!hasItemID) {

@@ -1,0 +1,15 @@
+services:  
+  admin-prod:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: wavestore-admin-panel-prod
+    networks:
+      - app-network
+      - proxy-network
+
+networks:
+  app-network:
+    driver: bridge
+  proxy-network:
+    external: true
