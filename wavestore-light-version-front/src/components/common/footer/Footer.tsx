@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { ENV } from "../../../api/config/env";
 import { useProductStore } from "../../../api/store/product.store";
 import { FOOTER_LINKS, SOCIAL_LINKS } from "./footer";
 import style from "./Footer.module.scss";
@@ -20,7 +21,7 @@ export const Footer = () => {
           <div className={style.footer_grid}>
             <div className={style.footer_brand}>
               <NavLink to={"/"}>
-                <img src="/logo/wavestore-logo.svg" alt="" />
+                <img src={`${ENV.PUBLIC_BASE_URL}/logo/wavestore-logo.svg`} alt="" />
               </NavLink>
               <p className={style.footer_tagline}>Your sound, your way.</p>
               <div className={style.footer_socials}>

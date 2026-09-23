@@ -10,9 +10,10 @@ RUN apk add --no-cache \
     zip \
     unzip \
     oniguruma-dev \
-    netcat-openbsd
+    netcat-openbsd \
+    sqlite-dev && docker-php-ext-install pdo pdo_sqlite
 
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+RUN docker-php-ext-install pdo_mysql pdo_sqlite mbstring exif pcntl bcmath gd
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 

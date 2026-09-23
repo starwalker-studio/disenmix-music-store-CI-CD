@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { ENV } from "../../../../api/config/env";
 import { CAT_INDEX } from "./categories";
 import style from "./Categories.module.scss";
 
@@ -16,7 +17,7 @@ export const Categories = () => {
                 {CAT_INDEX.map((item) => (
                   <NavLink to={item.link} className={style.cat_item} key={item.id}>
                     <picture className={style.cat_image}>
-                      <img src={item.img} alt="" />
+                      <img src={`${ENV.PUBLIC_BASE_URL}/${item.img}`} alt="" />
                     </picture>
                     <div>
                       <h3>{item.label}</h3>

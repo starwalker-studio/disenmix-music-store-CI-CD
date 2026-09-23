@@ -1,10 +1,11 @@
+import { ENV } from "../../../../api/config/env";
 import { Button } from "../../../../components/ui/button/Button";
 import style from "./Hero.module.scss";
 
 export const Hero = () => {
   return (
     <>
-    <section className={style.hero_section}>
+    <section className={style.hero_section} style={{'backgroundImage': `url(${ENV.PUBLIC_BASE_URL}/hero/hero.jpg)`}}>
       <div className={style.overlay} />
       <div className={style.hero_container}>
         <div className={style.hero_wrapper}>
